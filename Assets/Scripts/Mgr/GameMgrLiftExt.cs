@@ -33,7 +33,7 @@ public partial class GameMgr
     public IEnumerator IE_MoveToTargetLevel(int level)
     {
         isMoving = true;
-        
+        mapMgr.MoveToLevel(level);
         yield return new WaitForSeconds(2);
         curLevel = level;
         isMoving = false;
@@ -43,6 +43,7 @@ public partial class GameMgr
     public IEnumerator IE_EatHuman()
     {
         isMoving = true;
+        mapMgr.MoveToHeaven();
         yield return new WaitForSeconds(5);
         isMoving = false;
         yield break;
