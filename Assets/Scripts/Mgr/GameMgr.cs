@@ -10,7 +10,6 @@ public partial class GameMgr : MonoSingleton<GameMgr>
     [HideInInspector]
     public GameData gameData;
 
-
     public override void Init()
     {
         gameData = new GameData();

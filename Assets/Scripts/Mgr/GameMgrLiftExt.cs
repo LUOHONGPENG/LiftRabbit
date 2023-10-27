@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class GameMgr
 {
+    #region Select Level
     [HideInInspector]
     public bool isMoving = false;
 
@@ -47,4 +48,37 @@ public partial class GameMgr
         isMoving = false;
         yield break;
     }
+    #endregion
+
+    #region Generate Human
+
+    public float timerGenerateHuman = 0;
+    public float timeGenerateHuman = 5f;
+
+    private void Update()
+    {
+        TimeGo(Time.deltaTime);
+    }
+
+    public void TimeGo(float time)
+    {
+        timerGenerateHuman -= time;
+        if (timerGenerateHuman < 0)
+        {
+            timerGenerateHuman = timeGenerateHuman;
+            GenerateHuman();
+        }
+    }
+
+
+    public void GenerateHuman()
+    {
+        HumanData humanData = gameData.GenerateCharacter();
+        mapMgr.AddHuman(humanData);
+    }
+
+
+
+
+    #endregion
 }

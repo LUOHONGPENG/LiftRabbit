@@ -6,28 +6,28 @@ public class GameData : MonoBehaviour
 {
     //Data
     public int numLevel = 3;
-    public int keyIDCharacter = -1;
+    public int keyIDHuman = -1;
     public int curLevel = 1;
     //List
-    public List<CharacterData> listAllCharacter = new List<CharacterData>();
-    public List<CharacterData> listCharacterInLift = new List<CharacterData>();
+    public List<HumanData> listAllHuman = new List<HumanData>();
+    public List<HumanData> listHumanInLift = new List<HumanData>();
 
-    public Dictionary<int, Queue<CharacterData>> dicLevelCharacter = new Dictionary<int, Queue<CharacterData>>();
+    public Dictionary<int, Queue<HumanData>> dicLevelHuman = new Dictionary<int, Queue<HumanData>>();
 
     public GameData()
     {
         numLevel = 3;
         curLevel = 1;
-        keyIDCharacter = -1;
+        keyIDHuman = -1;
 
-        listAllCharacter.Clear();
-        listCharacterInLift.Clear();
-        dicLevelCharacter.Clear();
+        listAllHuman.Clear();
+        listHumanInLift.Clear();
+        dicLevelHuman.Clear();
 
         for (int i = 1;i <= numLevel; i++)
         {
-            Queue<CharacterData> ququeCharacter = new Queue<CharacterData>();
-            dicLevelCharacter.Add(i, ququeCharacter);
+            Queue<HumanData> queueHuman = new Queue<HumanData>();
+            dicLevelHuman.Add(i, queueHuman);
         }
     }
 
@@ -35,26 +35,23 @@ public class GameData : MonoBehaviour
     public void AddLevel()
     {
         numLevel++;
-        Queue<CharacterData> ququeCharacter = new Queue<CharacterData>();
-        dicLevelCharacter.Add(numLevel, ququeCharacter);
+        Queue<HumanData> ququeHuman = new Queue<HumanData>();
+        dicLevelHuman.Add(numLevel, ququeHuman);
         //Refresh View
     }
 
     #endregion
 
-    public void GenerateCharacter()
+    public HumanData GenerateCharacter()
     {
-        keyIDCharacter++;
+        keyIDHuman++;
 
-        CharacterData newCharacter = new CharacterData(keyIDCharacter);
+        HumanData newHuman = new HumanData(keyIDHuman);
         //Random initial Level
         int ran = Random.Range(1, numLevel + 1);
-        newCharacter.initialPos = ran;
-        listAllCharacter.Add(newCharacter);
-        
-        
-        //dicLevelCharacter.Add(ran, newCharacter);
-        
+        newHuman.initialPos = ran;
+        listAllHuman.Add(newHuman);
+                
         //Random target level
         List<int> listLevel = new List<int>();
         for(int i = 1;i <= numLevel; i++)
@@ -62,20 +59,21 @@ public class GameData : MonoBehaviour
             listLevel.Add(i);
         }
         List<int> listDelete = new List<int> { ran };
-        newCharacter.targetPos = PublicTool.DrawNum(1, listLevel, listDelete)[0];
+        newHuman.targetPos = PublicTool.DrawNum(1, listLevel, listDelete)[0];
         //Refresh view
 
+        return newHuman;
     }
 }
 
 
-public class CharacterData
+public class HumanData
 {
     public int keyID = -1;
     public int initialPos;
     public int targetPos;
 
-    public CharacterData(int keyID)
+    public HumanData(int keyID)
     {
         this.keyID = keyID;
     }
