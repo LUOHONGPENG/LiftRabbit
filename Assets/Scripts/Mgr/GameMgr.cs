@@ -10,14 +10,11 @@ public partial class GameMgr : MonoSingleton<GameMgr>
     [HideInInspector]
     public GameData gameData;
 
-    private void Start()
-    {
-        Init();
-    }
 
     public override void Init()
     {
         gameData = new GameData();
+        mapMgr.Init();
         uiMgr.Init();
         Debug.Log("InitGameData");
     }

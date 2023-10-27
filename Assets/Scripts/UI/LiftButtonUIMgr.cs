@@ -15,6 +15,18 @@ public class LiftButtonUIMgr : MonoBehaviour
 
     private GameData gameData;
 
+    private void Update()
+    {
+        if (GameMgr.Instance.isMoving)
+        {
+            btnEat.interactable = false;
+        }
+        else
+        {
+            btnEat.interactable = true;
+        }
+    }
+
     public void Init()
     {
         gameData = PublicTool.GetGameData();
@@ -22,7 +34,7 @@ public class LiftButtonUIMgr : MonoBehaviour
         PublicTool.ClearChildItem(tfLiftButton);
         dicLiftButton.Clear();
 
-        for(int i = 1;i < gameData.numLevel; i++)
+        for(int i = 1;i <= gameData.numLevel; i++)
         {
             GameObject objLiftButton = GameObject.Instantiate(pfLiftButton, tfLiftButton);
             LiftButtonUIItem itemLiftButton = objLiftButton.GetComponent<LiftButtonUIItem>();

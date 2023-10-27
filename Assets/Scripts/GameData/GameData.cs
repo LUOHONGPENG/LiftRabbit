@@ -7,6 +7,7 @@ public class GameData : MonoBehaviour
     //Data
     public int numLevel = 3;
     public int keyIDCharacter = -1;
+    public int curLevel = 1;
     //List
     public List<CharacterData> listAllCharacter = new List<CharacterData>();
     public List<CharacterData> listCharacterInLift = new List<CharacterData>();
@@ -16,6 +17,7 @@ public class GameData : MonoBehaviour
     public GameData()
     {
         numLevel = 3;
+        curLevel = 1;
         keyIDCharacter = -1;
 
         listAllCharacter.Clear();

@@ -5,15 +5,13 @@ using UnityEngine;
 public partial class GameMgr
 {
     [HideInInspector]
-    public int curLevel = 1;
-    [HideInInspector]
     public bool isMoving = false;
 
     public void SelectLevelEvent(object arg0)
     {
         int tarLevel = (int)arg0;
 
-        if (curLevel == tarLevel)
+        if (gameData.curLevel == tarLevel)
         {
             //Oh I am here
         }
@@ -21,11 +19,11 @@ public partial class GameMgr
         {
             if (tarLevel >= 1)
             {
-                IE_MoveToTargetLevel(tarLevel);
+                StartCoroutine(IE_MoveToTargetLevel(tarLevel));
             }
             else
             {
-                IE_EatHuman();
+                StartCoroutine(IE_EatHuman());
             }
         }
     }
@@ -34,8 +32,8 @@ public partial class GameMgr
     {
         isMoving = true;
         mapMgr.MoveToLevel(level);
-        yield return new WaitForSeconds(2);
-        curLevel = level;
+        yield return new WaitForSeconds(1f);
+        gameData.curLevel = level;
         isMoving = false;
         yield break;
     }
@@ -43,8 +41,9 @@ public partial class GameMgr
     public IEnumerator IE_EatHuman()
     {
         isMoving = true;
+        gameData.curLevel = -1;
         mapMgr.MoveToHeaven();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5f);
         isMoving = false;
         yield break;
     }

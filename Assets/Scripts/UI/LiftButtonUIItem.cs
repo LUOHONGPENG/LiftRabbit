@@ -18,4 +18,16 @@ public class LiftButtonUIItem : MonoBehaviour
             EventCenter.Instance.EventTrigger("SelectLevel", Level);
         });
     }
+
+    private void Update()
+    {
+        if (GameMgr.Instance.isMoving)
+        {
+            btnLiftButton.interactable = false;
+        }
+        else
+        {
+            btnLiftButton.interactable = true;
+        }
+    }
 }

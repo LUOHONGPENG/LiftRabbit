@@ -10,4 +10,9 @@ public partial class PublicTool
         return GameMgr.Instance.gameData;
     }
 
+
+    public static float ConvertLevelToPosY(int Level)
+    {
+        return -2f + Level;
+    }
 }
