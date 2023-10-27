@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     //Data
-    public int numLevel = 3;
-    public int keyIDHuman = -1;
     public int curLevel = 1;
+    public int numLevel = 3;
+
+    public int capacity = 4;
+
+    public int keyIDHuman = -1;
     //List
     public List<HumanData> listAllHuman = new List<HumanData>();
     public List<HumanData> listHumanInLift = new List<HumanData>();
@@ -44,26 +47,44 @@ public class GameData : MonoBehaviour
 
     public HumanData GenerateCharacter()
     {
-        keyIDHuman++;
-
-        HumanData newHuman = new HumanData(keyIDHuman);
         //Random initial Level
         int ran = Random.Range(1, numLevel + 1);
-        newHuman.initialPos = ran;
-        listAllHuman.Add(newHuman);
-                
-        //Random target level
-        List<int> listLevel = new List<int>();
-        for(int i = 1;i <= numLevel; i++)
+        if (dicLevelHuman.ContainsKey(ran))
         {
-            listLevel.Add(i);
-        }
-        List<int> listDelete = new List<int> { ran };
-        newHuman.targetPos = PublicTool.DrawNum(1, listLevel, listDelete)[0];
-        //Refresh view
+            if (dicLevelHuman[ran].Count <= 4)
+            {
+                keyIDHuman++;
+                HumanData newHuman = new HumanData(keyIDHuman);
+                newHuman.initialPos = ran;
+                listAllHuman.Add(newHuman);
+                dicLevelHuman[ran].Enqueue(newHuman);
 
-        return newHuman;
+                //Random target level
+                List<int> listLevel = new List<int>();
+                for (int i = 1; i <= numLevel; i++)
+                {
+                    listLevel.Add(i);
+                }
+                List<int> listDelete = new List<int> { ran };
+                newHuman.targetPos = PublicTool.DrawNum(1, listLevel, listDelete)[0];
+
+                return newHuman;
+            }
+        }
+
+        return null;
+
     }
+
+    public void HumanEnter(int level)
+    {
+        Queue<HumanData> queueHuman = dicLevelHuman[level];
+        while(listHumanInLift.Count < capacity && queueHuman.Count > 0)
+        {
+            listHumanInLift.Add(queueHuman.Dequeue());
+        }
+    }
+
 }
 
 

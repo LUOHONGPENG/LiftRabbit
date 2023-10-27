@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class HumanViewItem : MonoBehaviour
 {
@@ -17,6 +18,17 @@ public class HumanViewItem : MonoBehaviour
 
         //Burn
 
-        transform.position = new Vector2(3f, PublicTool.ConvertLevelToPosY(humanData.initialPos));
+        transform.position = new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.initialPos)-0.2f);
+    }
+
+    public void RefreshPosInQueue(int columnID)
+    {
+        transform.DOMove(new Vector2(columnID+1f, PublicTool.ConvertLevelToPosY(humanData.initialPos)-0.2f),1f);
+    }
+
+    public void RefreshPosLift(Transform tf)
+    {
+        this.transform.parent = tf;
+        this.transform.DOMove(tf.position + new Vector3(0,0.1f,0), 1f);
     }
 }

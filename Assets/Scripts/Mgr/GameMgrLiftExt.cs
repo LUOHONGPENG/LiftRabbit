@@ -32,9 +32,12 @@ public partial class GameMgr
     public IEnumerator IE_MoveToTargetLevel(int level)
     {
         isMoving = true;
-        mapMgr.MoveToLevel(level);
+        liftViewMgr.MoveToLevel(level);
         yield return new WaitForSeconds(1f);
         gameData.curLevel = level;
+        gameData.HumanEnter(level);
+        RefreshHumanPosInLift();
+        RefreshHumanPosInQueue(level);
         isMoving = false;
         yield break;
     }
@@ -43,14 +46,14 @@ public partial class GameMgr
     {
         isMoving = true;
         gameData.curLevel = -1;
-        mapMgr.MoveToHeaven();
+        liftViewMgr.MoveToHeaven();
         yield return new WaitForSeconds(5f);
         isMoving = false;
         yield break;
     }
     #endregion
 
-    #region Generate Human
+    #region Human
 
     public float timerGenerateHuman = 0;
     public float timeGenerateHuman = 5f;
@@ -74,10 +77,36 @@ public partial class GameMgr
     public void GenerateHuman()
     {
         HumanData humanData = gameData.GenerateCharacter();
-        mapMgr.AddHuman(humanData);
+        if (humanData != null)
+        {
+            humanViewMgr.AddHumanView(humanData);
+
+            int level = humanData.initialPos;
+            RefreshHumanPosInQueue(level);
+        }
+
+
     }
 
+    public void RefreshHumanPosInQueue(int level)
+    {
+        Queue<HumanData> queue = new Queue<HumanData>(gameData.dicLevelHuman[level]);
+        int count = queue.Count;
+        for (int i = 0; i < count; i++)
+        {
+            HumanData tempData = queue.Dequeue();
+            humanViewMgr.RefreshHumanPosInQueue(tempData.keyID, i);
+        }
+    }
 
+    public void RefreshHumanPosInLift()
+    {
+        for(int i = 0; i < gameData.listHumanInLift.Count; i++)
+        {
+            HumanData tempData = gameData.listHumanInLift[i];
+            humanViewMgr.RefreshHumanPosInLift(tempData.keyID, liftViewMgr.tfHuman);
+        }
+    }
 
 
     #endregion

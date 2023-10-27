@@ -6,6 +6,7 @@ using DG.Tweening;
 public class LiftViewMgr : MonoBehaviour
 {
     public Transform tfLift;
+    public Transform tfHuman;
     private GameData gameData;
     public void Init()
     {
