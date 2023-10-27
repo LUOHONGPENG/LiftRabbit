@@ -4,8 +4,9 @@ using UnityEngine;
 
 public partial class GameMgr
 {
+    [HideInInspector]
     public int curLevel = 1;
-
+    [HideInInspector]
     public bool isMoving = false;
 
     public void SelectLevelEvent(object arg0)
@@ -32,6 +33,7 @@ public partial class GameMgr
     public IEnumerator IE_MoveToTargetLevel(int level)
     {
         isMoving = true;
+        
         yield return new WaitForSeconds(2);
         curLevel = level;
         isMoving = false;
