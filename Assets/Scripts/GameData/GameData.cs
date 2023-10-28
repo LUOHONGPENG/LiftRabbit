@@ -7,21 +7,33 @@ public class GameData : MonoBehaviour
     //Data
     public int curLevel = 1;
     public int numLevel = 3;
-
+    //Lift
     public int capacity = 4;
-
+    //Human
     public int keyIDHuman = -1;
+    public List<int> listUnlockHuman = new List<int>();
+    //Score
+    public int money = 0;
+    public int popularity = 0;
+
     //List
     public List<HumanData> listAllHuman = new List<HumanData>();
     public List<HumanData> listHumanInLift = new List<HumanData>();
-
+    public List<HumanData> listHumanLeave = new List<HumanData>();
     public Dictionary<int, Queue<HumanData>> dicLevelHuman = new Dictionary<int, Queue<HumanData>>();
 
     public GameData()
     {
+        //Level
         numLevel = 3;
         curLevel = 1;
+        //Lift
+        capacity = 4;
+        //Human
         keyIDHuman = -1;
+        listUnlockHuman.Clear();
+        listUnlockHuman.Add(1001);
+        listUnlockHuman.Add(1002);
 
         listAllHuman.Clear();
         listHumanInLift.Clear();
@@ -45,16 +57,18 @@ public class GameData : MonoBehaviour
 
     #endregion
 
-    public HumanData GenerateCharacter()
+    public HumanData GenerateHuman()
     {
         //Random initial Level
         int ran = Random.Range(1, numLevel + 1);
+        int typeID = PublicTool.DrawNum(1, listUnlockHuman, null)[0];
         if (dicLevelHuman.ContainsKey(ran))
         {
             if (dicLevelHuman[ran].Count <= 4)
             {
                 keyIDHuman++;
-                HumanData newHuman = new HumanData(keyIDHuman);
+                HumanData newHuman = new HumanData(keyIDHuman, typeID);
+                newHuman.humanState = HumanState.InQueue;
                 newHuman.initialPos = ran;
                 listAllHuman.Add(newHuman);
                 dicLevelHuman[ran].Enqueue(newHuman);
@@ -71,9 +85,7 @@ public class GameData : MonoBehaviour
                 return newHuman;
             }
         }
-
         return null;
-
     }
 
     public void HumanEnter(int level)
@@ -85,19 +97,65 @@ public class GameData : MonoBehaviour
         }
     }
 
+    public void HumanLeave(int level)
+    {
+        for(int i = listHumanInLift.Count-1; i >= 0; i--)
+        {
+            HumanData humanData = listHumanInLift[i];
+            if(level == humanData.targetPos)
+            {
+                listHumanLeave.Add(humanData);
+                listHumanInLift.Remove(humanData);
+            }
+        }
+    }
+
+    public void HumanEat()
+    {
+        int moneyTemp = 0;
+        for (int i = 0; i < listHumanInLift.Count; i++)
+        {
+            HumanData humanData = listHumanInLift[i];
+            //Eat
+            moneyTemp += humanData.GetMoney();
+        }
+        money += moneyTemp;
+    }
 }
 
 
 public class HumanData
 {
     public int keyID = -1;
+    public int typeID = -1;
     public int initialPos;
     public int targetPos;
 
-    public HumanData(int keyID)
+    public HumanState humanState = HumanState.InQueue;
+
+    public HumanDataExcelItem GetItem()
+    {
+        return PublicTool.GetHumanItem(typeID);
+    }
+
+    public int GetMoney()
+    {
+        return GetItem().money;
+    }
+
+    public HumanData(int keyID,int typeID)
     {
         this.keyID = keyID;
+        this.typeID = typeID;
     }
 
     
+}
+
+public enum HumanState
+{
+    InQueue,
+    InLift,
+    Leave,
+    Eaten
 }

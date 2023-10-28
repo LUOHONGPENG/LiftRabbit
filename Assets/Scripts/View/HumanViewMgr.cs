@@ -36,8 +36,18 @@ public class HumanViewMgr : MonoBehaviour
         humanView.RefreshPosLift(tf);
     }
 
+    public IEnumerator IE_RefreshHumanPosLeave(int keyID)
+    {
+        HumanViewItem humanView = dicHumanView[keyID];
+        humanView.RefreshPosLeave();
+        yield return new WaitForSeconds(2F);
+        RemoveHumanView(keyID);
+    }
+
     public void RemoveHumanView(int keyID)
     {
-
+        HumanViewItem humanView = dicHumanView[keyID];
+        dicHumanView.Remove(keyID);
+        Destroy(humanView.gameObject);
     }
 }

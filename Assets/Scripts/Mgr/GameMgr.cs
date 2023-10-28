@@ -16,6 +16,7 @@ public partial class GameMgr : MonoSingleton<GameMgr>
     public override void Init()
     {
         gameData = new GameData();
+        InitExcelData();
         mapMgr.Init();
         liftViewMgr = mapMgr.liftViewMgr;
         humanViewMgr = mapMgr.humanViewMgr;

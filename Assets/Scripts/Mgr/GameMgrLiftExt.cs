@@ -35,7 +35,9 @@ public partial class GameMgr
         liftViewMgr.MoveToLevel(level);
         yield return new WaitForSeconds(1f);
         gameData.curLevel = level;
+        gameData.HumanLeave(level);
         gameData.HumanEnter(level);
+        RefreshHumanPosLeave();
         RefreshHumanPosInLift();
         RefreshHumanPosInQueue(level);
         isMoving = false;
@@ -47,7 +49,12 @@ public partial class GameMgr
         isMoving = true;
         gameData.curLevel = -1;
         liftViewMgr.MoveToHeaven();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
+        gameData.HumanEat();
+        yield return new WaitForSeconds(3f);
+        ClearHumanLift();
+        gameData.listHumanInLift.Clear();
+        yield return new WaitForEndOfFrame();
         isMoving = false;
         yield break;
     }
@@ -76,7 +83,7 @@ public partial class GameMgr
 
     public void GenerateHuman()
     {
-        HumanData humanData = gameData.GenerateCharacter();
+        HumanData humanData = gameData.GenerateHuman();
         if (humanData != null)
         {
             humanViewMgr.AddHumanView(humanData);
@@ -108,6 +115,24 @@ public partial class GameMgr
         }
     }
 
+    public void RefreshHumanPosLeave()
+    {
+        for (int i = 0; i < gameData.listHumanLeave.Count; i++)
+        {
+            HumanData tempData = gameData.listHumanLeave[i];
+            StartCoroutine(humanViewMgr.IE_RefreshHumanPosLeave(tempData.keyID));
+        }
+        gameData.listHumanLeave.Clear();
+    }
+
+    public void ClearHumanLift()
+    {
+        for (int i = 0; i < gameData.listHumanInLift.Count; i++)
+        {
+            HumanData tempData = gameData.listHumanInLift[i];
+            humanViewMgr.RemoveHumanView(tempData.keyID);
+        }
+    }
 
     #endregion
 }

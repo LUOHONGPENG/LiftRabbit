@@ -31,4 +31,9 @@ public class HumanViewItem : MonoBehaviour
         this.transform.parent = tf;
         this.transform.DOMove(tf.position + new Vector3(0,0.1f,0), 1f);
     }
+
+    public void RefreshPosLeave()
+    {
+        transform.DOMove(new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.targetPos) - 0.2f), 1f);
+    }
 }

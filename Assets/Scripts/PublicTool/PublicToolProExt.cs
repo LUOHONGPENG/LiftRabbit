@@ -15,4 +15,9 @@ public partial class PublicTool
     {
         return -2f + Level;
     }
+
+    public static HumanDataExcelItem GetHumanItem(int ID)
+    {
+        return GameMgr.Instance.humanExcelData.GetExcelItem(ID);
+    }
 }

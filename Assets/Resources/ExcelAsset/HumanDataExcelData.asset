@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474ce4f6bfa344045b93ecce08fab6b0, type: 3}
+  m_Name: HumanDataExcelData
+  m_EditorClassIdentifier: 
+  items:
+  - id: 1001
+    name: "\u828B\u5706"
+    score: 10
+    waitTime: 30
+  - id: 1002
+    name: "\u73CD\u73E0"
+    score: 50
+    waitTime: 25
+  - id: 1003
+    name: "\u6930\u679C"
+    score: 100
+    waitTime: 20
+  - id: 2001
+    name: "\u8FA3\u6912"
+    score: -100
+    waitTime: 20
+  - id: 9999
+    name: "\u5C4E"
+    score: -1000
+    waitTime: 30
