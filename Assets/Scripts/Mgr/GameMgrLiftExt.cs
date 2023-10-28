@@ -217,6 +217,11 @@ public partial class GameMgr
                 {
                     temp = true;
                 }
+
+                if (uiMgr.levelUpMgr.objPopup.activeSelf)
+                {
+                    temp = true;
+                }
             }
             return temp;
         }

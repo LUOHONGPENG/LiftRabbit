@@ -14,6 +14,7 @@ public partial class GameMgr
             uiMgr.AddLevelRefresh();
             gameData.listUnlockHuman.Add(1002);
             gameData.canEat = true;
+            EventCenter.Instance.EventTrigger("LevelUpPage", null);
         }
         else if(gameData.curStarLevel == StarLevel.Star1 && gameData.Money >= 150)
         {
@@ -22,7 +23,7 @@ public partial class GameMgr
             levelViewMgr.RefreshLevel();
             uiMgr.AddLevelRefresh();
             gameData.listUnlockHuman.Add(1003);
-
+            EventCenter.Instance.EventTrigger("LevelUpPage", null);
         }
         else if (gameData.curStarLevel == StarLevel.Star2 && gameData.Money >= 500)
         {
@@ -31,6 +32,7 @@ public partial class GameMgr
             levelViewMgr.RefreshLevel();
             uiMgr.AddLevelRefresh();
             gameData.listUnlockHuman.Add(2001);
+            EventCenter.Instance.EventTrigger("LevelUpPage", null);
 
         }
         else if (gameData.curStarLevel == StarLevel.Star3 && gameData.Money >= 1000)
@@ -40,7 +42,7 @@ public partial class GameMgr
             levelViewMgr.RefreshLevel();
             uiMgr.AddLevelRefresh();
             gameData.listUnlockHuman.Add(9999);
-
+            EventCenter.Instance.EventTrigger("LevelUpPage", null);
         }
         else if (gameData.curStarLevel == StarLevel.Star4 && gameData.Money >= 1600)
         {
