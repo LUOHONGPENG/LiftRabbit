@@ -25,8 +25,19 @@ public partial class PublicTool
     {
         return GameMgr.Instance.humanExcelData.GetExcelItem(ID);
     }
+
+    public static ComboExcelItem GetComboItem(int ID)
+    {
+        return GameMgr.Instance.comboExcelData.GetExcelItem(ID);
+    }
+
     public static void PlaySound(SoundType sound)
     {
         EventCenter.Instance.EventTrigger("PlaySound", sound);
+    }
+
+    public static List<int> CheckCombo(List<Vector2Int> listEat)
+    {
+        return GameMgr.Instance.comboExcelData.CheckWhetherBonus(listEat);
     }
 }
