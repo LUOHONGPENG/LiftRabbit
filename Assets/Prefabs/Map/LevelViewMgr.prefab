@@ -78,3 +78,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tfLevel: {fileID: 4511461670641460924}
   pfLevel: {fileID: 3008644671497145030, guid: b14fc0dc76361564e832bcd95def8c00, type: 3}
+  codeCapacity: {fileID: 0}

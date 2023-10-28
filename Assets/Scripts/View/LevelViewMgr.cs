@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelViewMgr : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LevelViewMgr : MonoBehaviour
     public GameObject pfLevel;
 
     private GameData gameData;
-
+    private bool isInit = false;
     public void Init()
     {
         gameData = PublicTool.GetGameData();
@@ -19,10 +20,14 @@ public class LevelViewMgr : MonoBehaviour
             GameObject objLevel = GameObject.Instantiate(pfLevel, tfLevel);
             objLevel.transform.position = new Vector2(4.65f, PublicTool.ConvertLevelToPosY(i) + GameGlobal.posYLevel);
         }
+        isInit = true;
+
     }
 
     public void RefreshLevel()
     {
 
     }
+
+
 }

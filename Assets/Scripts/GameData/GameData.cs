@@ -9,6 +9,20 @@ public class GameData : MonoBehaviour
     public int numLevel = 3;
     //Lift
     public int capacity = 4;
+    public int curLiftLoad
+    {
+        get
+        {
+            if (listHumanInLift != null)
+            {
+                return listHumanInLift.Count;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
     //Human
     public int keyIDHuman = -1;
     public List<int> listUnlockHuman = new List<int>();
@@ -93,7 +107,7 @@ public class GameData : MonoBehaviour
     {
         Queue<HumanData> queueHuman = dicLevelHuman[level];
         bool humanEnter = false;
-        while(listHumanInLift.Count < capacity && queueHuman.Count > 0)
+        while(curLiftLoad < capacity && queueHuman.Count > 0)
         {
             listHumanInLift.Add(queueHuman.Dequeue());
             humanEnter = true;

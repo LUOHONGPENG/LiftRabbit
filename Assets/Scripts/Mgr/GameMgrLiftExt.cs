@@ -46,7 +46,7 @@ public partial class GameMgr
 
     public IEnumerator IE_EatHuman()
     {
-        if (gameData.listHumanInLift.Count <= 0)
+        if (gameData.curLiftLoad <= 0)
         {
             PublicTool.PlaySound(SoundType.NoConsumer);
         }

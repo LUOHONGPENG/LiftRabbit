@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class LiftViewMgr : MonoBehaviour
 {
     public Transform tfLift;
     public Transform tfHuman;
+    public Text codeCapacity;
     private GameData gameData;
+    private bool isInit = false;
     public void Init()
     {
         gameData = PublicTool.GetGameData();
         tfLift.position = new Vector2(tfLift.position.x, PublicTool.ConvertLevelToPosY(gameData.curLevel) + GameGlobal.posYLift);
+
+        isInit = true;
     }
 
 
@@ -24,5 +29,11 @@ public class LiftViewMgr : MonoBehaviour
     {
         tfLift.DOMoveY(1f, 1f);
     }
-
+    private void Update()
+    {
+        if (isInit)
+        {
+            codeCapacity.text = string.Format("Îü¹ÜÈÝÁ¿{0}/{1}", gameData.curLiftLoad, gameData.capacity);
+        }
+    }
 }
