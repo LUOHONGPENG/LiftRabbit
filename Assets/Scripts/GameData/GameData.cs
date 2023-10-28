@@ -2,9 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StarLevel
+{
+    Star0,
+    Star1,//2
+    Star2,//3 Hungry
+    Star3,//Spicy
+    Star4,//Shit
+    Star5
+}
+
+
 public partial class GameData
 {
     //Data
+    public StarLevel curStarLevel = StarLevel.Star0;
+    public bool canEat = false;
     public int curLevel = 1;
     public int numLevel = 3;
 
@@ -28,6 +41,7 @@ public partial class GameData
             {
                 money = 0;
             }
+            GameMgr.Instance.CheckStarLevelUp();
         }
     }
 
@@ -48,6 +62,7 @@ public partial class GameData
             {
                 popularity = 100;
             }
+            GameMgr.Instance.CheckStarLevelUp();
         }
     }
 
@@ -56,15 +71,16 @@ public partial class GameData
     public GameData()
     {
         //Level
-        numLevel = 3;
+        curStarLevel = StarLevel.Star0;
+        numLevel = 2;
         curLevel = 1;
+        canEat = false;
         //Lift
         capacity = 4;
         //Human
         keyIDHuman = -1;
         listUnlockHuman.Clear();
         listUnlockHuman.Add(1001);
-        listUnlockHuman.Add(1002);
 
         listAllHuman.Clear();
         listHumanInLift.Clear();
@@ -83,7 +99,6 @@ public partial class GameData
         numLevel++;
         List<HumanData> ququeHuman = new List<HumanData>();
         dicLevelHumanQueue.Add(numLevel, ququeHuman);
-        //Refresh View
     }
 
     #endregion

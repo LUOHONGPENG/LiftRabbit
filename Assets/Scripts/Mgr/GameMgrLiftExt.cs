@@ -79,7 +79,10 @@ public partial class GameMgr
 
     private void Update()
     {
-        TimeGo(Time.deltaTime);
+        if (!isPageOn)
+        {
+            TimeGo(Time.deltaTime);
+        }
     }
 
     public void TimeGo(float time)
@@ -202,4 +205,20 @@ public partial class GameMgr
     }
 
     #endregion
+
+    public bool isPageOn
+    {
+        get
+        {
+            bool temp = false;
+            if (isInit)
+            {
+                if (uiMgr.skillNodeUIMgr.objPopup.activeSelf)
+                {
+                    temp = true;
+                }
+            }
+            return temp;
+        }
+    }
 }

@@ -14,16 +14,28 @@ public class LiftButtonUIMgr : MonoBehaviour
     public Button btnEat;
 
     private GameData gameData;
+    private bool isInit = false;
 
     private void Update()
     {
-        if (GameMgr.Instance.isMoving)
+        if (isInit)
         {
-            btnEat.interactable = false;
-        }
-        else
-        {
-            btnEat.interactable = true;
+            if (gameData.canEat)
+            {
+                btnEat.gameObject.SetActive(true);
+                if (GameMgr.Instance.isMoving)
+                {
+                    btnEat.interactable = false;
+                }
+                else
+                {
+                    btnEat.interactable = true;
+                }
+            }
+            else
+            {
+                btnEat.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -47,11 +59,20 @@ public class LiftButtonUIMgr : MonoBehaviour
         {
             EventCenter.Instance.EventTrigger("SelectLevel", -99);
         });
-
+        isInit = true;
     }
 
     public void RefreshLiftButton()
     {
-
+        for (int i = 1; i <= gameData.numLevel; i++)
+        {
+            if (!dicLiftButton.ContainsKey(i))
+            {
+                GameObject objLiftButton = GameObject.Instantiate(pfLiftButton, tfLiftButton);
+                LiftButtonUIItem itemLiftButton = objLiftButton.GetComponent<LiftButtonUIItem>();
+                itemLiftButton.Init(i);
+                dicLiftButton.Add(i, itemLiftButton);
+            }
+        }
     }
 }

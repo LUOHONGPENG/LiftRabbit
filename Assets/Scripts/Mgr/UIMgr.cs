@@ -16,4 +16,9 @@ public class UIMgr : MonoBehaviour
         effectUIMgr.Init();
         skillNodeUIMgr.Init();
     }
+
+    public void AddLevelRefresh()
+    {
+        liftButtonUIMgr.RefreshLiftButton();
+    }
 }

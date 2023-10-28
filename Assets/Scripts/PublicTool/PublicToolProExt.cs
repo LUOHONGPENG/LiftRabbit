@@ -51,6 +51,10 @@ public partial class PublicTool
         else
         {
             timeMove = Mathf.Abs(curLevel - tarLevel) * 0.5f;
+            if (timeMove > 1.5f)
+            {
+                timeMove = 1.5f;
+            }
             timeMove = timeMove / GetGameData().curSpeedLift;
         }
         return timeMove;

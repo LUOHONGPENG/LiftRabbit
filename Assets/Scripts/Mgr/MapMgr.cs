@@ -17,10 +17,6 @@ public class MapMgr : MonoBehaviour
 
 
 
-    public void AddLevel()
-    {
-
-    }
 
 
 }

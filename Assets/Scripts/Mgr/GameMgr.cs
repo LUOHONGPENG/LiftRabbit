@@ -9,7 +9,9 @@ public partial class GameMgr : MonoSingleton<GameMgr>
     public SoundMgr soundMgr;
 
     private LiftViewMgr liftViewMgr;
+    private LevelViewMgr levelViewMgr;
     private HumanViewMgr humanViewMgr;
+    private bool isInit = false;
 
     [HideInInspector]
     public GameData gameData;
@@ -20,10 +22,13 @@ public partial class GameMgr : MonoSingleton<GameMgr>
         InitExcelData();
         mapMgr.Init();
         liftViewMgr = mapMgr.liftViewMgr;
+        levelViewMgr = mapMgr.levelViewMgr;
         humanViewMgr = mapMgr.humanViewMgr;
         uiMgr.Init();
         soundMgr.Init();
         Debug.Log("InitGameData");
+
+        isInit = true;
     }
 
     private void OnEnable()

@@ -11,17 +11,22 @@ public class LevelViewMgr : MonoBehaviour
 
     private GameData gameData;
     private bool isInit = false;
+    private Dictionary<int, LevelViewItem> dicLevelView = new Dictionary<int, LevelViewItem>();
+
+
     public void Init()
     {
         gameData = PublicTool.GetGameData();
         PublicTool.ClearChildItem(tfLevel);
+        dicLevelView.Clear();
 
-        for(int i = 1; i <= gameData.numLevel; i++)
+        for (int i = 1; i <= gameData.numLevel; i++)
         {
             GameObject objLevel = GameObject.Instantiate(pfLevel, tfLevel);
             objLevel.transform.position = new Vector2(4.65f, PublicTool.ConvertLevelToPosY(i) + GameGlobal.posYLevel);
             LevelViewItem itemLevel = objLevel.GetComponent<LevelViewItem>();
             itemLevel.Init(i);
+            dicLevelView.Add(i, itemLevel);
         }
         isInit = true;
 
@@ -29,7 +34,17 @@ public class LevelViewMgr : MonoBehaviour
 
     public void RefreshLevel()
     {
-
+        for (int i = 1; i <= gameData.numLevel; i++)
+        {
+            if (!dicLevelView.ContainsKey(i))
+            {
+                GameObject objLevel = GameObject.Instantiate(pfLevel, tfLevel);
+                objLevel.transform.position = new Vector2(4.65f, PublicTool.ConvertLevelToPosY(i) + GameGlobal.posYLevel);
+                LevelViewItem itemLevel = objLevel.GetComponent<LevelViewItem>();
+                itemLevel.Init(i);
+                dicLevelView.Add(i, itemLevel);
+            }
+        }
     }
 
     private void Update()
