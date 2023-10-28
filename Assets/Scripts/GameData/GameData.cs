@@ -140,6 +140,7 @@ public class GameData : MonoBehaviour
     public void HumanEat()
     {
         int moneyTemp = 0;
+        PublicTool.PlaySound(SoundType.Eat);
         for (int i = 0; i < listHumanInLift.Count; i++)
         {
             HumanData humanData = listHumanInLift[i];

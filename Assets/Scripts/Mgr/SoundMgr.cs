@@ -11,6 +11,7 @@ public enum SoundType
     DaDa,
     LevelUp,
     Eat,
+    NoConsumer,
     Shit
 }
 
@@ -24,6 +25,9 @@ public class SoundMgr : MonoBehaviour
     public AudioSource auHello2;
     public AudioSource auDaDa;
     public AudioSource auLevelUp;
+    public AudioSource auEat;
+    public AudioSource auNoConsumer;
+
 
 
     public Dictionary<SoundType, AudioSource> dicSoundAudio = new Dictionary<SoundType, AudioSource>();
@@ -53,11 +57,16 @@ public class SoundMgr : MonoBehaviour
         dicSoundAudio.Add(SoundType.Hello2, auHello2);
         dicSoundAudio.Add(SoundType.DaDa, auDaDa);
         dicSoundAudio.Add(SoundType.LevelUp, auLevelUp);
+        dicSoundAudio.Add(SoundType.Eat, auEat);
+        dicSoundAudio.Add(SoundType.NoConsumer, auNoConsumer);
+
 
         dicSoundTime.Clear();
         dicSoundTime.Add(SoundType.Hello1, 0.4f);
         dicSoundTime.Add(SoundType.Hello2, 0.4f);
         dicSoundTime.Add(SoundType.DaDa, 1.4f);
+        dicSoundTime.Add(SoundType.LevelUp, 0.4f);
+        dicSoundTime.Add(SoundType.Eat, 0.2f);
 
     }
 

@@ -46,17 +46,27 @@ public partial class GameMgr
 
     public IEnumerator IE_EatHuman()
     {
-        isMoving = true;
-        gameData.curLevel = -1;
-        liftViewMgr.MoveToHeaven();
-        yield return new WaitForSeconds(1f);
-        gameData.HumanEat();
-        yield return new WaitForSeconds(3f);
-        ClearHumanLift();
-        gameData.listHumanInLift.Clear();
-        yield return new WaitForEndOfFrame();
-        isMoving = false;
-        yield break;
+        if (gameData.listHumanInLift.Count <= 0)
+        {
+            PublicTool.PlaySound(SoundType.NoConsumer);
+        }
+        else
+        {
+            isMoving = true;
+            gameData.curLevel = -1;
+            liftViewMgr.MoveToHeaven();
+            yield return new WaitForSeconds(1f);
+            gameData.HumanEat();
+            yield return new WaitForSeconds(3f);
+            ClearHumanLift();
+            gameData.listHumanInLift.Clear();
+            yield return new WaitForEndOfFrame();
+            isMoving = false;
+            yield break;
+        }
+
+
+
     }
     #endregion
 

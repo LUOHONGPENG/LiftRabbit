@@ -20,12 +20,12 @@ MonoBehaviour:
     spriteUrl: imgHuman1001
   - id: 1002
     name: "\u73CD\u73E0"
-    money: 50
+    money: 30
     waitTime: 25
     spriteUrl: imgHuman1002
   - id: 1003
     name: "\u6930\u679C"
-    money: 100
+    money: 50
     waitTime: 20
     spriteUrl: imgHuman1003
   - id: 2001
