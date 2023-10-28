@@ -36,11 +36,19 @@ public class HumanViewMgr : MonoBehaviour
         humanView.RefreshPosLift(tf, posID);
     }
 
-    public IEnumerator IE_RefreshHumanPosLeave(int keyID)
+    public IEnumerator IE_RefreshHumanPosArrive(int keyID)
     {
         HumanViewItem humanView = dicHumanView[keyID];
-        humanView.RefreshPosLeave();
-        yield return new WaitForSeconds(2F);
+        humanView.RefreshPosArrive();
+        yield return new WaitForSeconds(1.5F);
+        RemoveHumanView(keyID);
+    }
+
+    public IEnumerator IE_RefreshHumanPosEscape(int keyID)
+    {
+        HumanViewItem humanView = dicHumanView[keyID];
+        humanView.RefreshPosEscape();
+        yield return new WaitForSeconds(1.5F);
         RemoveHumanView(keyID);
     }
 
@@ -49,5 +57,15 @@ public class HumanViewMgr : MonoBehaviour
         HumanViewItem humanView = dicHumanView[keyID];
         dicHumanView.Remove(keyID);
         Destroy(humanView.gameObject);
+    }
+
+    public void RefreshWaitTime(int keyID)
+    {
+        if (dicHumanView.ContainsKey(keyID))
+        {
+            HumanViewItem humanView = dicHumanView[keyID];
+            humanView.RefreshWaitUI();
+        }
+
     }
 }

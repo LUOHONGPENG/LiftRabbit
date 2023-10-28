@@ -72,7 +72,7 @@ public partial class GameData
 
         for (int i = 1;i <= numLevel; i++)
         {
-            Queue<HumanData> queueHuman = new Queue<HumanData>();
+            List<HumanData> queueHuman = new List<HumanData>();
             dicLevelHumanQueue.Add(i, queueHuman);
         }
     }
@@ -81,7 +81,7 @@ public partial class GameData
     public void AddLevel()
     {
         numLevel++;
-        Queue<HumanData> ququeHuman = new Queue<HumanData>();
+        List<HumanData> ququeHuman = new List<HumanData>();
         dicLevelHumanQueue.Add(numLevel, ququeHuman);
         //Refresh View
     }

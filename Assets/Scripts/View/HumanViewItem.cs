@@ -10,6 +10,10 @@ public class HumanViewItem : MonoBehaviour
     public SpriteRenderer spHuman;
     public Text codeTargetLevel;
 
+
+    public Image imgTarget;
+    public Image imgFill;
+
     private HumanData humanData;
 
     public void Init(HumanData humanData)
@@ -35,8 +39,28 @@ public class HumanViewItem : MonoBehaviour
         this.transform.DOLocalMove(GameGlobal.listLiftPos[posID], 1f);
     }
 
-    public void RefreshPosLeave()
+    public void RefreshPosArrive()
     {
         transform.DOMove(new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.targetPos) + GameGlobal.posYHuman), 1f);
+    }
+
+    public void RefreshPosEscape()
+    {
+        transform.DOMove(new Vector2(12f, PublicTool.ConvertLevelToPosY(humanData.targetPos) + GameGlobal.posYHuman + 3f), 1f).SetEase(Ease.OutQuad);
+    }
+
+    public void RefreshWaitUI()
+    {
+        switch (humanData.humanState)
+        {
+            case HumanState.InQueue:
+            case HumanState.Escape:
+            case HumanState.InLift:
+                imgFill.fillAmount = humanData.waitTime / humanData.waitTimeLimit;
+                break;
+            case HumanState.Arrive:
+                imgTarget.gameObject.SetActive(false);
+                break;
+        }
     }
 }

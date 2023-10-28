@@ -38,7 +38,7 @@ public partial class GameMgr
         gameData.curLevel = level;
         gameData.HumanArrive(level);
         gameData.HumanEnter(level);
-        RefreshHumanPosLeave();
+        RefreshHumanPosArrive();
         RefreshHumanPosInLift();
         RefreshHumanPosInQueue(level);
         isMoving = false;
@@ -84,13 +84,56 @@ public partial class GameMgr
 
     public void TimeGo(float time)
     {
+        //Generate Human
         timerGenerateHuman -= time * gameData.curSpeedGenerateHuman;
         if (timerGenerateHuman < 0)
         {
             timerGenerateHuman = timeGenerateHuman;
             GenerateHuman();
         }
+
+        //Check All Human
+        for(int i = gameData.listAllHuman.Count-1; i >= 0; i--)
+        {
+            HumanData humanData = gameData.listAllHuman[i];
+            switch (humanData.humanState)
+            {
+                case HumanState.InQueue:
+                    humanData.TimeGoWait(time);
+                    RefreshHumanWaitUI(humanData);
+                    if (humanData.CheckWhetherWaitOut())
+                    {
+                        RemoveHumanFromQueue(humanData);
+                    }
+                    break;
+                case HumanState.InLift:
+                    RefreshHumanWaitUI(humanData);
+                    break;
+                case HumanState.Arrive:
+                    RefreshHumanWaitUI(humanData);
+                    gameData.listAllHuman.Remove(humanData);
+                    break;
+                case HumanState.Eaten:
+                    gameData.listAllHuman.Remove(humanData);
+                    break;
+                case HumanState.Escape:
+                    gameData.listAllHuman.Remove(humanData);
+                    break;
+            }
+        }
+
     }
+
+    private void RemoveHumanFromQueue(HumanData humanData)
+    {
+        humanData.humanState = HumanState.Escape;
+        List<HumanData> queue = gameData.dicLevelHumanQueue[humanData.initialPos];
+        queue.Remove(humanData);
+        gameData.listHumanEscape.Add(humanData);
+        RefreshHumanPosInQueue(humanData.initialPos);
+        RefreshHumanPosEscape(humanData);
+    }
+
 
 
     public void GenerateHuman()
@@ -103,17 +146,16 @@ public partial class GameMgr
             int level = humanData.initialPos;
             RefreshHumanPosInQueue(level);
         }
-
-
     }
 
     public void RefreshHumanPosInQueue(int level)
     {
-        Queue<HumanData> queue = new Queue<HumanData>(gameData.dicLevelHumanQueue[level]);
+        List<HumanData> queue = new List<HumanData>(gameData.dicLevelHumanQueue[level]);
         int count = queue.Count;
         for (int i = 0; i < count; i++)
         {
-            HumanData tempData = queue.Dequeue();
+            HumanData tempData = queue[0];
+            queue.RemoveAt(0);
             humanViewMgr.RefreshHumanPosInQueue(tempData.keyID, i);
         }
     }
@@ -127,15 +169,28 @@ public partial class GameMgr
         }
     }
 
-    public void RefreshHumanPosLeave()
+    public void RefreshHumanPosArrive()
     {
-        for (int i = 0; i < gameData.listHumanLeave.Count; i++)
+        for (int i = 0; i < gameData.listHumanArrive.Count; i++)
         {
-            HumanData tempData = gameData.listHumanLeave[i];
-            StartCoroutine(humanViewMgr.IE_RefreshHumanPosLeave(tempData.keyID));
+            HumanData tempData = gameData.listHumanArrive[i];
+            StartCoroutine(humanViewMgr.IE_RefreshHumanPosArrive(tempData.keyID));
         }
-        gameData.listHumanLeave.Clear();
+        gameData.listHumanArrive.Clear();
     }
+
+    public void RefreshHumanPosEscape(HumanData humanData)
+    {
+        StartCoroutine(humanViewMgr.IE_RefreshHumanPosEscape(humanData.keyID));
+        gameData.listHumanEscape.Remove(humanData);
+    }
+
+    private void RefreshHumanWaitUI(HumanData humanData)
+    {
+        humanViewMgr.RefreshWaitTime(humanData.keyID);
+
+    }
+
 
     public void ClearHumanLift()
     {

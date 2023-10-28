@@ -7,6 +7,7 @@ public class LevelViewMgr : MonoBehaviour
 {
     public Transform tfLevel;
     public GameObject pfLevel;
+    public Text codeQueueLimit;
 
     private GameData gameData;
     private bool isInit = false;
@@ -31,5 +32,11 @@ public class LevelViewMgr : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        if (isInit)
+        {
+            codeQueueLimit.text = string.Format("队伍长度上限 {0}", gameData.curQueueLimit);
+        }
+    }
 }

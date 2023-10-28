@@ -7,8 +7,9 @@ public partial class GameData
     //List
     public List<HumanData> listAllHuman = new List<HumanData>();
     public List<HumanData> listHumanInLift = new List<HumanData>();
-    public List<HumanData> listHumanLeave = new List<HumanData>();
-    public Dictionary<int, Queue<HumanData>> dicLevelHumanQueue = new Dictionary<int, Queue<HumanData>>();
+    public List<HumanData> listHumanArrive = new List<HumanData>();
+    public List<HumanData> listHumanEscape = new List<HumanData>();
+    public Dictionary<int, List<HumanData>> dicLevelHumanQueue = new Dictionary<int, List<HumanData>>();
 
     public HumanData GenerateHuman()
     {
@@ -25,7 +26,7 @@ public partial class GameData
                 newHuman.humanState = HumanState.InQueue;
                 newHuman.initialPos = ran;
                 listAllHuman.Add(newHuman);
-                dicLevelHumanQueue[ran].Enqueue(newHuman);
+                dicLevelHumanQueue[ran].Add(newHuman);
 
                 //Random target level
                 List<int> listLevel = new List<int>();
@@ -44,11 +45,15 @@ public partial class GameData
 
     public void HumanEnter(int level)
     {
-        Queue<HumanData> queueHuman = dicLevelHumanQueue[level];
+        List<HumanData> queueHuman = dicLevelHumanQueue[level];
         bool humanEnter = false;
         while (curLiftLoad < curCapacity && queueHuman.Count > 0)
         {
-            listHumanInLift.Add(queueHuman.Dequeue());
+            HumanData tempHuman = queueHuman[0];
+            queueHuman.RemoveAt(0);
+            tempHuman.humanState = HumanState.InLift;
+            tempHuman.waitTime = 0;
+            listHumanInLift.Add(tempHuman);
             humanEnter = true;
         }
 
@@ -76,7 +81,8 @@ public partial class GameData
             HumanData humanData = listHumanInLift[i];
             if (level == humanData.targetPos)
             {
-                listHumanLeave.Add(humanData);
+                listHumanArrive.Add(humanData);
+                humanData.humanState = HumanState.Arrive;
                 Popularity++;
                 listHumanInLift.Remove(humanData);
                 humanArrive = true;
@@ -98,6 +104,7 @@ public partial class GameData
         for (int i = 0; i < listHumanInLift.Count; i++)
         {
             HumanData humanData = listHumanInLift[i];
+            humanData.humanState = HumanState.Eaten;
             if (dicTypeNum.ContainsKey(humanData.typeID))
             {
                 dicTypeNum[humanData.typeID]++;
@@ -149,7 +156,6 @@ public partial class GameData
                 dicHumanTypeNum.Add(typeID, 1);
             }
         }
-
     }
 
 }
@@ -161,6 +167,9 @@ public class HumanData
     public int typeID = -1;
     public int initialPos;
     public int targetPos;
+
+    public float waitTimeLimit = 100f;
+    public float waitTime = 0;
 
     public HumanState humanState = HumanState.InQueue;
 
@@ -178,8 +187,26 @@ public class HumanData
     {
         this.keyID = keyID;
         this.typeID = typeID;
+
+        this.waitTimeLimit = GetItem().waitTime;
     }
 
+    public void TimeGoWait(float time)
+    {
+        waitTime += time;
+    }
+
+    public bool CheckWhetherWaitOut()
+    {
+        if(waitTime > waitTimeLimit)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
 
@@ -187,6 +214,7 @@ public enum HumanState
 {
     InQueue,
     InLift,
-    Leave,
-    Eaten
+    Arrive,
+    Eaten,
+    Escape
 }
