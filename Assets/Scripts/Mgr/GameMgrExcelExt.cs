@@ -5,11 +5,14 @@ using UnityEngine;
 public partial class GameMgr
 {
     [HideInInspector]
-    public HumanDataExcelData humanExcelData;
+    public HumanExcelData humanExcelData;
+    [HideInInspector]
+    public ComboExcelData comboExcelData;
 
     public void InitExcelData()
     {
-        humanExcelData = ExcelManager.Instance.GetExcelData<HumanDataExcelData, HumanDataExcelItem>();
+        humanExcelData = ExcelManager.Instance.GetExcelData<HumanExcelData, HumanExcelItem>();
+        comboExcelData = ExcelManager.Instance.GetExcelData<ComboExcelData, ComboExcelItem>();
     }
 
 }

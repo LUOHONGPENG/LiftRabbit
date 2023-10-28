@@ -10,6 +10,8 @@ public partial class ComboExcelItem : ExcelItemBase
 {
 	public string name;
 	public int bonus;
+	public List<int> listType;
+	public List<int> listNum;
 }
 
 [CreateAssetMenu(fileName = "ComboExcelData", menuName = "Excel To ScriptableObject/Create ComboExcelData", order = 1)]
@@ -32,6 +34,8 @@ public class ComboAssetAssignment
 			items[i].id = Convert.ToInt32(allItemValueRowList[i]["id"]);
 			items[i].name = allItemValueRowList[i]["name"];
 			items[i].bonus = Convert.ToInt32(allItemValueRowList[i]["bonus"]);
+			items[i].listType = new List<int>(Array.ConvertAll((allItemValueRowList[i]["listType"]).Split(';'), int.Parse));
+			items[i].listNum = new List<int>(Array.ConvertAll((allItemValueRowList[i]["listNum"]).Split(';'), int.Parse));
 		}
 		ComboExcelData excelDataAsset = ScriptableObject.CreateInstance<ComboExcelData>();
 		excelDataAsset.items = items;

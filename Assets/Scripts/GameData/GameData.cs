@@ -197,7 +197,7 @@ public class HumanData
 
     public HumanState humanState = HumanState.InQueue;
 
-    public HumanDataExcelItem GetItem()
+    public HumanExcelItem GetItem()
     {
         return PublicTool.GetHumanItem(typeID);
     }

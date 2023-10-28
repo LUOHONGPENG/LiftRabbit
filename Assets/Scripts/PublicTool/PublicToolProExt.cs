@@ -21,7 +21,7 @@ public partial class PublicTool
         return ColumnID + 1.2f;
     }
 
-    public static HumanDataExcelItem GetHumanItem(int ID)
+    public static HumanExcelItem GetHumanItem(int ID)
     {
         return GameMgr.Instance.humanExcelData.GetExcelItem(ID);
     }

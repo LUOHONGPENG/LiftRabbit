@@ -16,12 +16,20 @@ MonoBehaviour:
   - id: 1001
     name: "\u4E09\u91CD\u828B\u5706"
     bonus: 60
+    listType: e9030000
+    listNum: 03000000
   - id: 1002
     name: "\u4E09\u500D\u73CD\u73E0"
     bonus: 150
+    listType: ea030000
+    listNum: 03000000
   - id: 1003
     name: "\u4E09\u4E2A\u6930\u679C"
     bonus: 250
+    listType: eb030000
+    listNum: 03000000
   - id: 2001
     name: "\u5976\u8336\u4E09\u5144\u5F1F"
     bonus: 200
+    listType: e9030000ea030000eb030000
+    listNum: 010000000100000001000000
