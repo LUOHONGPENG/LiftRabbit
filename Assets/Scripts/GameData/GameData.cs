@@ -68,6 +68,7 @@ public class GameData : MonoBehaviour
             {
                 keyIDHuman++;
                 HumanData newHuman = new HumanData(keyIDHuman, typeID);
+                
                 newHuman.humanState = HumanState.InQueue;
                 newHuman.initialPos = ran;
                 listAllHuman.Add(newHuman);
