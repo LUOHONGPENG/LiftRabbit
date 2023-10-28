@@ -11,6 +11,7 @@ public partial class HumanDataExcelItem : ExcelItemBase
 	public string name;
 	public int money;
 	public int waitTime;
+	public string spriteUrl;
 }
 
 [CreateAssetMenu(fileName = "HumanDataExcelData", menuName = "Excel To ScriptableObject/Create HumanDataExcelData", order = 1)]
@@ -34,6 +35,7 @@ public class HumanDataAssetAssignment
 			items[i].name = allItemValueRowList[i]["name"];
 			items[i].money = Convert.ToInt32(allItemValueRowList[i]["money"]);
 			items[i].waitTime = Convert.ToInt32(allItemValueRowList[i]["waitTime"]);
+			items[i].spriteUrl = allItemValueRowList[i]["spriteUrl"];
 		}
 		HumanDataExcelData excelDataAsset = ScriptableObject.CreateInstance<HumanDataExcelData>();
 		excelDataAsset.items = items;

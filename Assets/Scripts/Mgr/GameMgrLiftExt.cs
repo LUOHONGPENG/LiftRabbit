@@ -111,7 +111,7 @@ public partial class GameMgr
         for(int i = 0; i < gameData.listHumanInLift.Count; i++)
         {
             HumanData tempData = gameData.listHumanInLift[i];
-            humanViewMgr.RefreshHumanPosInLift(tempData.keyID, liftViewMgr.tfHuman);
+            humanViewMgr.RefreshHumanPosInLift(tempData.keyID, liftViewMgr.tfHuman,i);
         }
     }
 

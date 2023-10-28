@@ -30,10 +30,10 @@ public class HumanViewMgr : MonoBehaviour
         humanView.RefreshPosInQueue(columnID);
     }
 
-    public void RefreshHumanPosInLift(int keyID,Transform tf)
+    public void RefreshHumanPosInLift(int keyID,Transform tf,int posID)
     {
         HumanViewItem humanView = dicHumanView[keyID];
-        humanView.RefreshPosLift(tf);
+        humanView.RefreshPosLift(tf, posID);
     }
 
     public IEnumerator IE_RefreshHumanPosLeave(int keyID)

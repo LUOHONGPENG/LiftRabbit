@@ -10,4 +10,8 @@ public static class GameGlobal
 
     public static float posYHuman = -3f;
 
+
+    public static List<Vector2> listLiftPos = new List<Vector2> 
+    { new Vector2(-1.1f, 0), new Vector2(-0.8f, 0.4f), new Vector2(-0.4f, 0.7f), new Vector2(0f, 1f),new Vector2(0.4f, 0.6f),new Vector2(0.8f, 0.3f),new Vector2(1.1f, -0.05f),
+    new Vector2(0.6f, -0.2f)};
 }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEditor.U2D.Animation;
 
 public class HumanViewItem : MonoBehaviour
 {
+    public SpriteRenderer spHuman;
     public Text codeTargetLevel;
 
     private HumanData humanData;
@@ -15,6 +17,7 @@ public class HumanViewItem : MonoBehaviour
         this.humanData = humanData;
 
         codeTargetLevel.text = humanData.targetPos.ToString();
+        spHuman.sprite = Resources.Load("Sprites/" + humanData.GetItem().spriteUrl, typeof(Sprite)) as Sprite;
 
         //Burn
 
@@ -26,10 +29,10 @@ public class HumanViewItem : MonoBehaviour
         transform.DOMove(new Vector2(PublicTool.ConvertColumnToPosX(columnID), PublicTool.ConvertLevelToPosY(humanData.initialPos) + GameGlobal.posYHuman),1f);
     }
 
-    public void RefreshPosLift(Transform tf)
+    public void RefreshPosLift(Transform tf,int posID)
     {
         this.transform.parent = tf;
-        this.transform.DOMove(tf.position + new Vector3(0,0.1f,0), 1f);
+        this.transform.DOLocalMove(GameGlobal.listLiftPos[posID], 1f);
     }
 
     public void RefreshPosLeave()

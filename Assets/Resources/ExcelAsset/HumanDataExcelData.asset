@@ -17,19 +17,24 @@ MonoBehaviour:
     name: "\u828B\u5706"
     money: 10
     waitTime: 30
+    spriteUrl: imgHuman1001
   - id: 1002
     name: "\u73CD\u73E0"
     money: 50
     waitTime: 25
+    spriteUrl: imgHuman1002
   - id: 1003
     name: "\u6930\u679C"
     money: 100
     waitTime: 20
+    spriteUrl: imgHuman1003
   - id: 2001
     name: "\u8FA3\u6912"
     money: -100
     waitTime: 20
+    spriteUrl: imgHuman2001
   - id: 9999
     name: "\u5C4E"
     money: -1000
     waitTime: 30
+    spriteUrl: imgHuman9999
