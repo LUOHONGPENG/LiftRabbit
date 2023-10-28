@@ -22,7 +22,7 @@ public partial class GameData
         get
         {
             float speed = speedLift;
-            float speedBonus = Popularity * 0.025f;
+            float speedBonus = Popularity * 0.04f;
             speed += speedBonus;
             return speed;
         }

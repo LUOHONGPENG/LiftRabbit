@@ -40,4 +40,19 @@ public partial class PublicTool
     {
         return GameMgr.Instance.comboExcelData.CheckWhetherBonus(listEat);
     }
+
+    public static float CalculateLiftMoveTime(int curLevel,int tarLevel)
+    {
+        float timeMove = 1f;
+        if (curLevel < 0)
+        {
+            timeMove = timeMove / GetGameData().curSpeedLift;
+        }
+        else
+        {
+            timeMove = Mathf.Abs(curLevel - tarLevel) * 0.5f;
+            timeMove = timeMove / GetGameData().curSpeedLift;
+        }
+        return timeMove;
+    }
 }

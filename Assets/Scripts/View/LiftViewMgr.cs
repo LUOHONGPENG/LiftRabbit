@@ -20,7 +20,7 @@ public class LiftViewMgr : MonoBehaviour
     }
 
 
-    public void MoveToLevel(int Level)
+    public void MoveToLevel(int Level,float time)
     {
         tfLift.DOMoveY(PublicTool.ConvertLevelToPosY(Level) + GameGlobal.posYLift, 1f);
     }

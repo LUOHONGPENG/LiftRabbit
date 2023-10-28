@@ -8,16 +8,16 @@ public partial class GameData
     public List<HumanData> listAllHuman = new List<HumanData>();
     public List<HumanData> listHumanInLift = new List<HumanData>();
     public List<HumanData> listHumanLeave = new List<HumanData>();
-    public Dictionary<int, Queue<HumanData>> dicLevelHuman = new Dictionary<int, Queue<HumanData>>();
+    public Dictionary<int, Queue<HumanData>> dicLevelHumanQueue = new Dictionary<int, Queue<HumanData>>();
 
     public HumanData GenerateHuman()
     {
         //Random initial Level
         int ran = Random.Range(1, numLevel + 1);
         int typeID = PublicTool.DrawNum(1, listUnlockHuman, null)[0];
-        if (dicLevelHuman.ContainsKey(ran))
+        if (dicLevelHumanQueue.ContainsKey(ran))
         {
-            if (dicLevelHuman[ran].Count <= curQueueLimit)
+            if (dicLevelHumanQueue[ran].Count < curQueueLimit)
             {
                 keyIDHuman++;
                 HumanData newHuman = new HumanData(keyIDHuman, typeID);
@@ -25,7 +25,7 @@ public partial class GameData
                 newHuman.humanState = HumanState.InQueue;
                 newHuman.initialPos = ran;
                 listAllHuman.Add(newHuman);
-                dicLevelHuman[ran].Enqueue(newHuman);
+                dicLevelHumanQueue[ran].Enqueue(newHuman);
 
                 //Random target level
                 List<int> listLevel = new List<int>();
@@ -44,7 +44,7 @@ public partial class GameData
 
     public void HumanEnter(int level)
     {
-        Queue<HumanData> queueHuman = dicLevelHuman[level];
+        Queue<HumanData> queueHuman = dicLevelHumanQueue[level];
         bool humanEnter = false;
         while (curLiftLoad < curCapacity && queueHuman.Count > 0)
         {

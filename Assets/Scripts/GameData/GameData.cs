@@ -68,12 +68,12 @@ public partial class GameData
 
         listAllHuman.Clear();
         listHumanInLift.Clear();
-        dicLevelHuman.Clear();
+        dicLevelHumanQueue.Clear();
 
         for (int i = 1;i <= numLevel; i++)
         {
             Queue<HumanData> queueHuman = new Queue<HumanData>();
-            dicLevelHuman.Add(i, queueHuman);
+            dicLevelHumanQueue.Add(i, queueHuman);
         }
     }
 
@@ -82,7 +82,7 @@ public partial class GameData
     {
         numLevel++;
         Queue<HumanData> ququeHuman = new Queue<HumanData>();
-        dicLevelHuman.Add(numLevel, ququeHuman);
+        dicLevelHumanQueue.Add(numLevel, ququeHuman);
         //Refresh View
     }
 

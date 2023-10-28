@@ -32,8 +32,9 @@ public partial class GameMgr
     public IEnumerator IE_MoveToTargetLevel(int level)
     {
         isMoving = true;
-        liftViewMgr.MoveToLevel(level);
-        yield return new WaitForSeconds(1f);
+        float moveTime = PublicTool.CalculateLiftMoveTime(gameData.curLevel, level);
+        liftViewMgr.MoveToLevel(level, moveTime);
+        yield return new WaitForSeconds(moveTime);
         gameData.curLevel = level;
         gameData.HumanArrive(level);
         gameData.HumanEnter(level);
@@ -83,7 +84,7 @@ public partial class GameMgr
 
     public void TimeGo(float time)
     {
-        timerGenerateHuman -= time;
+        timerGenerateHuman -= time * gameData.curSpeedGenerateHuman;
         if (timerGenerateHuman < 0)
         {
             timerGenerateHuman = timeGenerateHuman;
@@ -108,7 +109,7 @@ public partial class GameMgr
 
     public void RefreshHumanPosInQueue(int level)
     {
-        Queue<HumanData> queue = new Queue<HumanData>(gameData.dicLevelHuman[level]);
+        Queue<HumanData> queue = new Queue<HumanData>(gameData.dicLevelHumanQueue[level]);
         int count = queue.Count;
         for (int i = 0; i < count; i++)
         {
