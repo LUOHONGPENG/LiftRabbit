@@ -148,6 +148,7 @@ public class GameData : MonoBehaviour
             moneyTemp += humanData.GetMoney();
         }
         money += moneyTemp;
+        EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("+" + moneyTemp, Vector2.zero));
     }
 }
 

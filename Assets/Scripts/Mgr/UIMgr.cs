@@ -6,6 +6,7 @@ public class UIMgr : MonoBehaviour
 {
     public LiftButtonUIMgr liftButtonUIMgr;
     public ResourceUIMgr resourceUIMgr;
+    public EffectUIMgr effectUIMgr;
 
     public void Init()
     {
