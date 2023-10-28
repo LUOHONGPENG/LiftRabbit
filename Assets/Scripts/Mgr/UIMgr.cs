@@ -9,6 +9,7 @@ public class UIMgr : MonoBehaviour
     public EffectUIMgr effectUIMgr;
     public SkillNodeUIMgr skillNodeUIMgr;
     public LevelUpUIMgr levelUpMgr;
+    public TutorialUIMgr tutorialUIMgr;
 
     public void Init()
     {
@@ -17,6 +18,7 @@ public class UIMgr : MonoBehaviour
         effectUIMgr.Init();
         skillNodeUIMgr.Init();
         levelUpMgr.Init();
+        tutorialUIMgr.Init();
     }
 
     public void AddLevelRefresh()
