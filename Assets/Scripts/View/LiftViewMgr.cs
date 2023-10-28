@@ -33,7 +33,7 @@ public class LiftViewMgr : MonoBehaviour
     {
         if (isInit)
         {
-            codeCapacity.text = string.Format("吸管容量{0}/{1}", gameData.curLiftLoad, gameData.capacity);
+            codeCapacity.text = string.Format("吸管容量{0}/{1}", gameData.curLiftLoad, gameData.curCapacity);
         }
     }
 }

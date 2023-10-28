@@ -19,6 +19,8 @@ public class LevelViewMgr : MonoBehaviour
         {
             GameObject objLevel = GameObject.Instantiate(pfLevel, tfLevel);
             objLevel.transform.position = new Vector2(4.65f, PublicTool.ConvertLevelToPosY(i) + GameGlobal.posYLevel);
+            LevelViewItem itemLevel = objLevel.GetComponent<LevelViewItem>();
+            itemLevel.Init(i);
         }
         isInit = true;
 
