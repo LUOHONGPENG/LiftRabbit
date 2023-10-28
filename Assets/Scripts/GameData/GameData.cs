@@ -27,8 +27,45 @@ public class GameData : MonoBehaviour
     public int keyIDHuman = -1;
     public List<int> listUnlockHuman = new List<int>();
     //Score
-    public int money = 0;
-    public int popularity = 0;
+    private int money = 0;
+    private int popularity = 0;
+
+    public int Money
+    {
+        get
+        {
+            return money;
+        }
+        set
+        {
+            money = value;
+            if (value < 0)
+            {
+                money = 0;
+            }
+        }
+    }
+
+    public int Popularity
+    {
+        get
+        {
+            return popularity;
+        }
+        set
+        {
+            popularity = value;
+            if (value < 0)
+            {
+                popularity = 0;
+            }
+            else if(value > 100)
+            {
+                popularity = 100;
+            }
+        }
+    }
+
 
     //List
     public List<HumanData> listAllHuman = new List<HumanData>();
@@ -138,7 +175,7 @@ public class GameData : MonoBehaviour
             if(level == humanData.targetPos)
             {
                 listHumanLeave.Add(humanData);
-                popularity++;
+                Popularity++;
                 listHumanInLift.Remove(humanData);
                 humanArrive = true;
             }
@@ -170,7 +207,7 @@ public class GameData : MonoBehaviour
             //Eat
             moneyTemp += humanData.GetMoney();
         }
-        money += moneyTemp;
+        Money += moneyTemp;
         EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("+" + moneyTemp, Vector2.zero));
 
         //Combo
@@ -191,7 +228,7 @@ public class GameData : MonoBehaviour
 
             EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo(comboItem.name + "+" + comboItem.bonus, Vector2.zero));
         }
-        money += moneyExtra;
+        Money += moneyExtra;
 
     }
 
