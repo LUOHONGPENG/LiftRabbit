@@ -92,22 +92,48 @@ public class GameData : MonoBehaviour
     public void HumanEnter(int level)
     {
         Queue<HumanData> queueHuman = dicLevelHuman[level];
+        bool humanEnter = false;
         while(listHumanInLift.Count < capacity && queueHuman.Count > 0)
         {
             listHumanInLift.Add(queueHuman.Dequeue());
+            humanEnter = true;
+        }
+
+        if (humanEnter)
+        {
+            int ran = Random.Range(0, 2);
+            switch (ran)
+            {
+                case 0:
+                    PublicTool.PlaySound(SoundType.Hello1);
+                    break;
+                case 1:
+                    PublicTool.PlaySound(SoundType.Hello2);
+                    break;
+            }
         }
     }
 
-    public void HumanLeave(int level)
+    public void HumanArrive(int level)
     {
-        for(int i = listHumanInLift.Count-1; i >= 0; i--)
+        bool humanArrive = false;
+
+        for (int i = listHumanInLift.Count-1; i >= 0; i--)
         {
             HumanData humanData = listHumanInLift[i];
             if(level == humanData.targetPos)
             {
                 listHumanLeave.Add(humanData);
+                popularity++;
                 listHumanInLift.Remove(humanData);
+                humanArrive = true;
             }
+        }
+
+        if (humanArrive)
+        {
+            PublicTool.PlaySound(SoundType.DaDa);
+
         }
     }
 

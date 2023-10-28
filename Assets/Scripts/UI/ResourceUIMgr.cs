@@ -25,5 +25,8 @@ public class ResourceUIMgr : MonoBehaviour
     public void RefreshResource()
     {
         codeMoney.text = PublicTool.GetGameData().money.ToString();
+
+        codePopularity.text = PublicTool.GetGameData().popularity.ToString();
+
     }
 }

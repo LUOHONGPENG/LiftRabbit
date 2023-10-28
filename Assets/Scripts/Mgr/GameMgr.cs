@@ -6,6 +6,7 @@ public partial class GameMgr : MonoSingleton<GameMgr>
 {
     public MapMgr mapMgr;
     public UIMgr uiMgr;
+    public SoundMgr soundMgr;
 
     private LiftViewMgr liftViewMgr;
     private HumanViewMgr humanViewMgr;
@@ -21,6 +22,7 @@ public partial class GameMgr : MonoSingleton<GameMgr>
         liftViewMgr = mapMgr.liftViewMgr;
         humanViewMgr = mapMgr.humanViewMgr;
         uiMgr.Init();
+        soundMgr.Init();
         Debug.Log("InitGameData");
     }
 

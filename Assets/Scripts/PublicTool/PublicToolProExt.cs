@@ -25,4 +25,8 @@ public partial class PublicTool
     {
         return GameMgr.Instance.humanExcelData.GetExcelItem(ID);
     }
+    public static void PlaySound(SoundType sound)
+    {
+        EventCenter.Instance.EventTrigger("PlaySound", sound);
+    }
 }

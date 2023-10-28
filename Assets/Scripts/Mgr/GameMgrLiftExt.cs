@@ -35,7 +35,7 @@ public partial class GameMgr
         liftViewMgr.MoveToLevel(level);
         yield return new WaitForSeconds(1f);
         gameData.curLevel = level;
-        gameData.HumanLeave(level);
+        gameData.HumanArrive(level);
         gameData.HumanEnter(level);
         RefreshHumanPosLeave();
         RefreshHumanPosInLift();
@@ -61,8 +61,9 @@ public partial class GameMgr
     #endregion
 
     #region Human
-
+    [HideInInspector]
     public float timerGenerateHuman = 0;
+    [HideInInspector]
     public float timeGenerateHuman = 5f;
 
     private void Update()

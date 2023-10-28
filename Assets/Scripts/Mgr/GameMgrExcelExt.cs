@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class GameMgr
 {
+    [HideInInspector]
     public HumanDataExcelData humanExcelData;
 
     public void InitExcelData()
