@@ -11,23 +11,18 @@ public class LiftViewMgr : MonoBehaviour
     public void Init()
     {
         gameData = PublicTool.GetGameData();
-        tfLift.position = new Vector2(tfLift.position.x, PublicTool.ConvertLevelToPosY(gameData.curLevel));
+        tfLift.position = new Vector2(tfLift.position.x, PublicTool.ConvertLevelToPosY(gameData.curLevel) + GameGlobal.posYLift);
     }
 
 
     public void MoveToLevel(int Level)
     {
-        tfLift.DOMoveY(PublicTool.ConvertLevelToPosY(Level),1f);
+        tfLift.DOMoveY(PublicTool.ConvertLevelToPosY(Level) + GameGlobal.posYLift, 1f);
     }
     
     public void MoveToHeaven()
     {
-        tfLift.DOMoveY(50f, 1f);
+        tfLift.DOMoveY(1f, 1f);
     }
 
-    public void BackToLevel(int Level)
-    {
-        tfLift.DOMoveY(PublicTool.ConvertLevelToPosY(Level), 1f);
-
-    }
 }

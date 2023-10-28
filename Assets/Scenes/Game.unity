@@ -320,7 +320,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -563,8 +563,10 @@ MonoBehaviour:
   mapMgr: {fileID: 6665750726402958608}
   uiMgr: {fileID: 296079172091095787}
   gameData: {fileID: 0}
-  curLevel: 1
+  humanExcelData: {fileID: 0}
   isMoving: 0
+  timerGenerateHuman: 0
+  timeGenerateHuman: 5
 --- !u!4 &1951534247
 Transform:
   m_ObjectHideFlags: 0

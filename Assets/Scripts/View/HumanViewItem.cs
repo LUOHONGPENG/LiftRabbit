@@ -18,12 +18,12 @@ public class HumanViewItem : MonoBehaviour
 
         //Burn
 
-        transform.position = new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.initialPos)-0.2f);
+        transform.position = new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.initialPos) + GameGlobal.posYHuman);
     }
 
     public void RefreshPosInQueue(int columnID)
     {
-        transform.DOMove(new Vector2(columnID+1f, PublicTool.ConvertLevelToPosY(humanData.initialPos)-0.2f),1f);
+        transform.DOMove(new Vector2(PublicTool.ConvertColumnToPosX(columnID), PublicTool.ConvertLevelToPosY(humanData.initialPos) + GameGlobal.posYHuman),1f);
     }
 
     public void RefreshPosLift(Transform tf)
@@ -34,6 +34,6 @@ public class HumanViewItem : MonoBehaviour
 
     public void RefreshPosLeave()
     {
-        transform.DOMove(new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.targetPos) - 0.2f), 1f);
+        transform.DOMove(new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.targetPos) + GameGlobal.posYHuman), 1f);
     }
 }
