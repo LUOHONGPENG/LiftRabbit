@@ -155,14 +155,35 @@ public class GameData : MonoBehaviour
     {
         int moneyTemp = 0;
         PublicTool.PlaySound(SoundType.Eat);
+        List<int> listHumanType = new List<int>();
         for (int i = 0; i < listHumanInLift.Count; i++)
         {
             HumanData humanData = listHumanInLift[i];
+            listHumanType.Add(humanData.typeID);
             //Eat
             moneyTemp += humanData.GetMoney();
         }
         money += moneyTemp;
         EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("+" + moneyTemp, Vector2.zero));
+
+    }
+
+    private void CheckCombo(List<int> listType)
+    {
+        Dictionary<int,int> dicHumanTypeNum = new Dictionary<int, int>();
+        for(int i = 0; i < listType.Count; i++)
+        {
+            int typeID = listType[i];
+            if (dicHumanTypeNum.ContainsKey(typeID))
+            {
+                dicHumanTypeNum[typeID]++;
+            }
+            else
+            {
+                dicHumanTypeNum.Add(typeID,1);
+            }
+        }
+
     }
 }
 

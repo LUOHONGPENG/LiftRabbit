@@ -55,7 +55,7 @@ public partial class GameMgr
             isMoving = true;
             gameData.curLevel = -1;
             liftViewMgr.MoveToHeaven();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             gameData.HumanEat();
             yield return new WaitForSeconds(3f);
             ClearHumanLift();
@@ -72,7 +72,7 @@ public partial class GameMgr
 
     #region Human
     [HideInInspector]
-    public float timerGenerateHuman = 0;
+    public float timerGenerateHuman = 5f;
     [HideInInspector]
     public float timeGenerateHuman = 5f;
 

@@ -27,7 +27,7 @@ public class LiftViewMgr : MonoBehaviour
     
     public void MoveToHeaven()
     {
-        tfLift.DOMoveY(1f, 1f);
+        tfLift.DOMoveY(1f, 0.5f);
     }
     private void Update()
     {
