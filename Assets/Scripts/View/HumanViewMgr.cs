@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class HumanViewMgr : MonoBehaviour
 {
@@ -44,10 +45,16 @@ public class HumanViewMgr : MonoBehaviour
         RemoveHumanView(keyID);
     }
 
-    public IEnumerator IE_RefreshHumanPosEscape(int keyID)
+    public IEnumerator IE_RefreshHumanPosEscape(int keyID,bool penalty)
     {
         HumanViewItem humanView = dicHumanView[keyID];
-        EventCenter.Instance.EventTrigger("EffectPenaltyText", new EffectPenaltyTextInfo("人气-1", humanView.transform.position));
+
+        if (penalty)
+        {
+            PublicTool.GetGameData().Popularity--;
+            EventCenter.Instance.EventTrigger("EffectPenaltyText", new EffectPenaltyTextInfo("人气-1", humanView.transform.position));
+        }
+
 
         humanView.RefreshPosEscape();
         yield return new WaitForSeconds(1.5F);

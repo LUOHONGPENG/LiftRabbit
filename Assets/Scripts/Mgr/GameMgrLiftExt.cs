@@ -213,9 +213,15 @@ public partial class GameMgr
 
     public void RefreshHumanPosEscape(HumanData humanData)
     {
-        StartCoroutine(humanViewMgr.IE_RefreshHumanPosEscape(humanData.keyID));
+        if(humanData.typeID == 9999)
+        {
+            StartCoroutine(humanViewMgr.IE_RefreshHumanPosEscape(humanData.keyID,false));
+        }
+        else
+        {
+            StartCoroutine(humanViewMgr.IE_RefreshHumanPosEscape(humanData.keyID,true));
+        }
 
-        gameData.Popularity--;
 
 
         gameData.listHumanEscape.Remove(humanData);
