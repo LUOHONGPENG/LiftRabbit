@@ -48,6 +48,7 @@ public class EffectUIMgr : MonoBehaviour
         EffectPenaltyTextInfo info = (EffectPenaltyTextInfo)arg0;
         GameObject objMoneyTip = GameObject.Instantiate(pfMoneyTip, tfPenalty);
         EffectUIItem itemMoneyTip = objMoneyTip.GetComponent<EffectUIItem>();
+        objMoneyTip.transform.position = info.pos;
         itemMoneyTip.Init(info.content);
     }
 

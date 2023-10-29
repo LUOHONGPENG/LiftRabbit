@@ -47,6 +47,8 @@ public class HumanViewMgr : MonoBehaviour
     public IEnumerator IE_RefreshHumanPosEscape(int keyID)
     {
         HumanViewItem humanView = dicHumanView[keyID];
+        EventCenter.Instance.EventTrigger("EffectPenaltyText", new EffectPenaltyTextInfo("ÈËÆø-1", humanView.transform.position));
+
         humanView.RefreshPosEscape();
         yield return new WaitForSeconds(1.5F);
         RemoveHumanView(keyID);

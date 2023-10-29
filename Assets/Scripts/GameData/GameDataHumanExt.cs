@@ -111,7 +111,11 @@ public partial class GameData
         Money += moneyTemp;
         EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("Œ¸ ’+" + moneyTemp, Vector2.zero));
         Money += moneyPanalty;
-        EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("¿±À¿¡À " + moneyPanalty, Vector2.zero));
+        if (moneyPanalty < 0)
+        {
+            EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("¿±À¿¡À " + moneyPanalty, Vector2.zero));
+
+        }
 
 
         //Combo
