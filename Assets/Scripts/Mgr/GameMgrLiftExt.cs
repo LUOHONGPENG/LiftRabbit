@@ -100,7 +100,7 @@ public partial class GameMgr
 
     private void Update()
     {
-        if (!isPageOn)
+        if (!isPageOn && isStart)
         {
             TimeGo(Time.deltaTime);
         }

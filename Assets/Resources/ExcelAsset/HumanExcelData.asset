@@ -31,10 +31,10 @@ MonoBehaviour:
   - id: 2001
     name: "\u8FA3\u6912"
     money: -100
-    waitTime: 20
+    waitTime: 15
     spriteUrl: imgHuman2001
   - id: 9999
     name: "\u5C4E"
     money: -1000
-    waitTime: 10
+    waitTime: 7
     spriteUrl: imgHuman9999

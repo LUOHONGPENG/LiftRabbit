@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class GameMgr : MonoSingleton<GameMgr>
@@ -12,6 +13,7 @@ public partial class GameMgr : MonoSingleton<GameMgr>
     private LevelViewMgr levelViewMgr;
     private HumanViewMgr humanViewMgr;
     private bool isInit = false;
+    private bool isStart = false;
 
     [HideInInspector]
     public GameData gameData;
@@ -27,9 +29,17 @@ public partial class GameMgr : MonoSingleton<GameMgr>
         uiMgr.Init();
         soundMgr.Init();
 
+        StartCoroutine(IE_Start());
         isInit = true;
+        
+    }
 
+    public IEnumerator IE_Start()
+    {
+        yield return new WaitForSeconds(1f);
+        isStart = true;
         EventCenter.Instance.EventTrigger("TutorialStart", TutorialGroup.Star0);
+
     }
 
     private void OnEnable()

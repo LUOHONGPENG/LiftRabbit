@@ -71,7 +71,14 @@ public partial class GameData
             {
                 listHumanArrive.Add(humanData);
                 humanData.humanState = HumanState.Arrive;
-                tempPopular+=2;
+                if (Popularity > 50)
+                {
+                    tempPopular++;
+                }
+                else
+                {
+                    tempPopular += 2;
+                }
                 listHumanInLift.Remove(humanData);
             }
         }
