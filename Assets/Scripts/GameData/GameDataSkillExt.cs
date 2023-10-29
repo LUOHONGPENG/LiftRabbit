@@ -66,7 +66,7 @@ public partial class GameData
         }
     }
 
-    private int queueLimit = 4;
+    private int queueLimit = 3;
     public int curQueueLimit
     {
         get

@@ -208,6 +208,10 @@ public partial class GameMgr
     public void RefreshHumanPosEscape(HumanData humanData)
     {
         StartCoroutine(humanViewMgr.IE_RefreshHumanPosEscape(humanData.keyID));
+
+        gameData.Popularity--;
+
+
         gameData.listHumanEscape.Remove(humanData);
     }
 
