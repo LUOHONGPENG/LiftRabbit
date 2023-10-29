@@ -31,6 +31,11 @@ public partial class PublicTool
         return GameMgr.Instance.comboExcelData.GetExcelItem(ID);
     }
 
+    public static SkillNodeExcelItem GetSkillNodeItem(int ID)
+    {
+        return GameMgr.Instance.skillNodeExcelData.GetExcelItem(ID);
+    }
+
     public static void PlaySound(SoundType sound)
     {
         EventCenter.Instance.EventTrigger("PlaySound", sound);

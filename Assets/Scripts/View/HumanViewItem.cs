@@ -25,7 +25,7 @@ public class HumanViewItem : MonoBehaviour
 
         //Burn
 
-        transform.position = new Vector2(10f, PublicTool.ConvertLevelToPosY(humanData.initialPos) + GameGlobal.posYHuman);
+        transform.position = new Vector2(8f, PublicTool.ConvertLevelToPosY(humanData.initialPos) + GameGlobal.posYHuman);
     }
 
     public void RefreshPosInQueue(int columnID)
@@ -46,7 +46,7 @@ public class HumanViewItem : MonoBehaviour
 
     public void RefreshPosEscape()
     {
-        transform.DOMove(new Vector2(12f, PublicTool.ConvertLevelToPosY(humanData.targetPos) + GameGlobal.posYHuman + 3f), 1f).SetEase(Ease.OutQuad);
+        transform.DOMove(new Vector2(11f, PublicTool.ConvertLevelToPosY(humanData.targetPos) + GameGlobal.posYHuman + 3f), 1f).SetEase(Ease.OutQuad);
     }
 
     public void RefreshWaitUI()

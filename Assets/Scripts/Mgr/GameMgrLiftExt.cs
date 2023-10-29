@@ -34,10 +34,30 @@ public partial class GameMgr
         isMoving = true;
         float moveTime = PublicTool.CalculateLiftMoveTime(gameData.curLevel, level);
         liftViewMgr.MoveToLevel(level, moveTime);
-        yield return new WaitForSeconds(moveTime);
         gameData.curLevel = level;
-        gameData.HumanArrive(level);
-        gameData.HumanEnter(level);
+        int tempPopular = gameData.HumanArrive(level);
+        bool isEnter = gameData.HumanEnter(level);
+        yield return new WaitForSeconds(moveTime);
+
+        //Sound
+        if (tempPopular>0)
+        {
+            gameData.Popularity += tempPopular;
+            PublicTool.PlaySound(SoundType.DaDa);
+        }
+        if (isEnter)
+        {
+            int ran = Random.Range(0, 2);
+            switch (ran)
+            {
+                case 0:
+                    PublicTool.PlaySound(SoundType.Hello1);
+                    break;
+                case 1:
+                    PublicTool.PlaySound(SoundType.Hello2);
+                    break;
+            }
+        }
         RefreshHumanPosArrive();
         RefreshHumanPosInLift();
         RefreshHumanPosInQueue(level);

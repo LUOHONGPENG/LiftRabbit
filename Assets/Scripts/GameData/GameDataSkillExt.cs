@@ -4,6 +4,16 @@ using UnityEngine;
 
 public partial class GameData
 {
+    public List<int> listUnlockSkillNode = new List<int>();
+
+    public void UnlockSkillNode(int skillID)
+    {
+        if (!listUnlockSkillNode.Contains(skillID))
+        {
+            listUnlockSkillNode.Add(skillID);
+        }
+    }
+
     private float speedLift = 1f;
     public float curSpeedLift
     {

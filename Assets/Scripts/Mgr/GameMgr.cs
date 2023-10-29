@@ -26,9 +26,10 @@ public partial class GameMgr : MonoSingleton<GameMgr>
         humanViewMgr = mapMgr.humanViewMgr;
         uiMgr.Init();
         soundMgr.Init();
-        Debug.Log("InitGameData");
 
         isInit = true;
+
+        EventCenter.Instance.EventTrigger("TutorialStart", TutorialGroup.Star0);
     }
 
     private void OnEnable()

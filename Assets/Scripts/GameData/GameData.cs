@@ -29,6 +29,8 @@ public partial class GameData
     private int money = 0;
     private int popularity = 0;
 
+    
+
     public int Money
     {
         get
@@ -82,6 +84,10 @@ public partial class GameData
         keyIDHuman = -1;
         listUnlockHuman.Clear();
         listUnlockHuman.Add(1001);
+
+        listUnlockSkillNode.Clear();
+        listUnlockSkillNode.Add(1000);
+
 
         listAllHuman.Clear();
         listHumanInLift.Clear();

@@ -43,7 +43,7 @@ public partial class GameData
         return null;
     }
 
-    public void HumanEnter(int level)
+    public bool HumanEnter(int level)
     {
         List<HumanData> queueHuman = dicLevelHumanQueue[level];
         bool humanEnter = false;
@@ -57,24 +57,12 @@ public partial class GameData
             humanEnter = true;
         }
 
-        if (humanEnter)
-        {
-            int ran = Random.Range(0, 2);
-            switch (ran)
-            {
-                case 0:
-                    PublicTool.PlaySound(SoundType.Hello1);
-                    break;
-                case 1:
-                    PublicTool.PlaySound(SoundType.Hello2);
-                    break;
-            }
-        }
+        return humanEnter;
     }
 
-    public void HumanArrive(int level)
+    public int HumanArrive(int level)
     {
-        bool humanArrive = false;
+        int tempPopular = 0;
 
         for (int i = listHumanInLift.Count - 1; i >= 0; i--)
         {
@@ -83,17 +71,13 @@ public partial class GameData
             {
                 listHumanArrive.Add(humanData);
                 humanData.humanState = HumanState.Arrive;
-                Popularity++;
+                tempPopular++;
                 listHumanInLift.Remove(humanData);
-                humanArrive = true;
             }
         }
 
-        if (humanArrive)
-        {
-            PublicTool.PlaySound(SoundType.DaDa);
+        return tempPopular;
 
-        }
     }
 
     public void HumanEat()
