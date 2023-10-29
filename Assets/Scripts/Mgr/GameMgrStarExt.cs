@@ -49,6 +49,7 @@ public partial class GameMgr
         {
             gameData.curStarLevel++;
 
+            EventCenter.Instance.EventTrigger("EndEvent", EndType.GoodEnd);
 
         }
     }

@@ -192,6 +192,12 @@ public partial class GameMgr
         {
             HumanData tempData = gameData.listHumanInLift[i];
             humanViewMgr.RefreshHumanPosInLift(tempData.keyID, liftViewMgr.tfHuman,i);
+
+            if(tempData.typeID == 9999)
+            {
+                EventCenter.Instance.EventTrigger("EndEvent", EndType.BadEnd);
+                break;
+            }
         }
     }
 
