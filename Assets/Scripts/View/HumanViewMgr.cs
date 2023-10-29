@@ -53,6 +53,16 @@ public class HumanViewMgr : MonoBehaviour
         {
             PublicTool.GetGameData().Popularity--;
             EventCenter.Instance.EventTrigger("EffectPenaltyText", new EffectPenaltyTextInfo("ÈËÆø-1", humanView.transform.position));
+
+            int ran = Random.Range(0, 2);
+            if (ran == 0)
+            {
+                PublicTool.PlaySound(SoundType.Slow1);
+            }
+            else
+            {
+                PublicTool.PlaySound(SoundType.Slow2);
+            }
         }
 
 

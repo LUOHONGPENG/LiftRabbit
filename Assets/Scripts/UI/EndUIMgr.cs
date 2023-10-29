@@ -44,11 +44,13 @@ public class EndUIMgr : MonoBehaviour
                 codeTitle.text = "查封结局";
                 codeDesc.text = "你怎能在我的奶茶里加如此污秽之物";
                 imgEnd.sprite = listSp[0];
+                PublicTool.PlaySound(SoundType.Shit);
                 break;
             case EndType.GoodEnd:
                 codeTitle.text = "五星结局";
                 codeDesc.text = "您就是大名鼎鼎的奶茶王";
                 imgEnd.sprite = listSp[1];
+                PublicTool.PlaySound(SoundType.NaiCha);
                 break;
         }
         objPopup.SetActive(true);

@@ -15,6 +15,7 @@ public partial class GameMgr
         if (gameData.curLevel == tarLevel)
         {
             //Oh I am here
+            PublicTool.PlaySound(SoundType.NoSame);
         }
         else
         {
@@ -69,7 +70,7 @@ public partial class GameMgr
     {
         if (gameData.curLiftLoad <= 0)
         {
-            PublicTool.PlaySound(SoundType.NoConsumer);
+            PublicTool.PlaySound(SoundType.LiftEmpty);
         }
         else
         {

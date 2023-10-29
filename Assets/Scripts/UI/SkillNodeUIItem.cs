@@ -41,6 +41,8 @@ public class SkillNodeUIItem : MonoBehaviour
             if(gameData.Popularity < thisItem.costPopular)
             {
                 //Not Enough
+                PublicTool.PlaySound(SoundType.NoPopular);
+
             }
             else
             {

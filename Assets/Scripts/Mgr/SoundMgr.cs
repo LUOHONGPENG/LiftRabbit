@@ -12,7 +12,17 @@ public enum SoundType
     LevelUp,
     Eat,
     NoConsumer,
-    Shit
+
+    LiftEmpty,
+    NoPopular,
+    Slow1,
+    Slow2,
+    Spicy1,
+    Spicy2,
+    NaiCha,
+    Shit,
+
+    NoSame
 }
 
 public class SoundMgr : MonoBehaviour
@@ -27,6 +37,17 @@ public class SoundMgr : MonoBehaviour
     public AudioSource auLevelUp;
     public AudioSource auEat;
     public AudioSource auNoConsumer;
+
+    public AudioSource auLiftEmpty;
+    public AudioSource auNoPopular;
+    public AudioSource auSlow1;
+    public AudioSource auSlow2;
+    public AudioSource auSpicy1;
+    public AudioSource auSpicy2;
+    public AudioSource auNaiCha;
+    public AudioSource auShit;
+    public AudioSource auNoSame;
+
 
 
 
@@ -60,6 +81,15 @@ public class SoundMgr : MonoBehaviour
         dicSoundAudio.Add(SoundType.Eat, auEat);
         dicSoundAudio.Add(SoundType.NoConsumer, auNoConsumer);
 
+        dicSoundAudio.Add(SoundType.LiftEmpty, auLiftEmpty);
+        dicSoundAudio.Add(SoundType.NoPopular, auNoPopular);
+        dicSoundAudio.Add(SoundType.Slow1, auSlow1);
+        dicSoundAudio.Add(SoundType.Slow2, auSlow2);
+        dicSoundAudio.Add(SoundType.Spicy1, auSpicy1);
+        dicSoundAudio.Add(SoundType.Spicy2, auSpicy2);
+        dicSoundAudio.Add(SoundType.NaiCha, auNaiCha);
+        dicSoundAudio.Add(SoundType.Shit, auShit);
+        dicSoundAudio.Add(SoundType.NoSame, auNoSame);
 
         dicSoundTime.Clear();
         dicSoundTime.Add(SoundType.Hello1, 0.4f);
@@ -67,6 +97,16 @@ public class SoundMgr : MonoBehaviour
         dicSoundTime.Add(SoundType.DaDa, 1.4f);
         dicSoundTime.Add(SoundType.LevelUp, 0.4f);
         dicSoundTime.Add(SoundType.Eat, 0.2f);
+
+        dicSoundTime.Add(SoundType.LiftEmpty, 0.6f);
+        dicSoundTime.Add(SoundType.NoPopular, 0.5f);
+        dicSoundTime.Add(SoundType.Slow1, 0.3f);
+        dicSoundTime.Add(SoundType.Slow2, 0.3f);
+        dicSoundTime.Add(SoundType.Spicy1, 0.5f);
+        dicSoundTime.Add(SoundType.Spicy2, 0.3f);
+        dicSoundTime.Add(SoundType.NaiCha, 0.6f);
+        dicSoundTime.Add(SoundType.Shit, 0.6f);
+        dicSoundTime.Add(SoundType.NoSame, 0.4f);
 
     }
 

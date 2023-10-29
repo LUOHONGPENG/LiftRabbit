@@ -114,7 +114,15 @@ public partial class GameData
         if (moneyPanalty < 0)
         {
             EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("À±ËÀÁË " + moneyPanalty, Vector2.zero));
-
+            int ran = Random.Range(0, 2);
+            if (ran == 0)
+            {
+                PublicTool.PlaySound(SoundType.Spicy1);
+            }
+            else
+            {
+                PublicTool.PlaySound(SoundType.Spicy2);
+            }
         }
 
 
