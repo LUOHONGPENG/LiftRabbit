@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9587297c89b2d914fab86d808428781e, type: 3}
+  m_Name: TutorialExcelData
+  m_EditorClassIdentifier: 
+  items:
+  - id: 1
+    group: 0
+    step: 0
+    strContent: "\u4F3C\u4E4E\u662F\u4E00\u5BB6\u5F88\u65B0\u7684\u5976\u8336\u5E97\u5462\uFF01\n\u8BA9\u6211\u6765\u7528\u5634\u5439\u5438\u7BA1\u597D\u597D\u73A9\u73A9\u5976\u8336\u7684\u914D\u6599\uFF01"
+  - id: 2
+    group: 0
+    step: 0
+    strContent: "\u6211\u5438\uFF01\u6211\u6536\uFF01\u5438\u7BA1\u7684\u6DB2\u67F1\u5C31\u50CF\u7535\u68AF\uFF01"
+  - id: 3
+    group: 0
+    step: 0
+    strContent: "\u6240\u4EE5\u8FD9\u5C31\u662F\u4E2A\u914D\u6599\u5750\u7535\u68AF\u7684\u6E38\u620F\u5566\uFF01\n\u966A\u6211\u73A9\u5427\uFF01"
+  - id: 4
+    group: 0
+    step: 0
+    strContent: "\u914D\u6599\u53F3\u4E0A\u89D2\u4F1A\u663E\u793A\u5B83\u4EEC\u7684\u76EE\u7684\u5730\uFF01"
+  - id: 5
+    group: 0
+    step: 0
+    strContent: "\u914D\u6599\u4E0A\u7535\u68AF\u4E4B\u540E\u8BF7\u6309\u5DE6\u8FB9\u7684\u7535\u68AF\u6309\u94AE\uFF0C\n\u6211\u4F1A\u7528\u5634\u9001\u4ED6\u4EEC\u5230\u76EE\u6807\u9AD8\u5EA6\uFF01"
+  - id: 6
+    group: 0
+    step: 0
+    strContent: "\u53EA\u6709\u7535\u68AF\u521A\u5230\u65F6\u914D\u6599\u624D\u4F1A\u56E0\u4E3A\u538B\u5F3A\u4E0A\u8F66\u54E6\uFF01"
+  - id: 7
+    group: 0
+    step: 1
+    strContent: 
+  - id: 8
+    group: 1
+    step: 0
+    strContent: "\u6CA1\u9519\u5C31\u662F\u8FD9\u6837\u73A9\u7684\u5566\uFF01"
+  - id: 9
+    group: 1
+    step: 0
+    strContent: "\u5230\u8FBE\u76EE\u7684\u5730\u7684\u914D\u6599\u4F1A\u548C\u670B\u53CB\u4ECB\u7ECD\u597D\u73A9\u7684\u5438\u7BA1\u7535\u68AF\uFF01\n\u6240\u4EE5\u4EBA\u6C14\u503C\u4F1A\u4E0A\u6DA8\uFF01"
+  - id: 10
+    group: 1
+    step: 0
+    strContent: "\u4EBA\u6C14\u503C\u8D8A\u9AD8\uFF0C\u914D\u6599\u5149\u987E\u7684\u8D8A\u5FEB\uFF01"
+  - id: 11
+    group: 1
+    step: 0
+    strContent: "\u4EBA\u6C14\u503C\u4E5F\u53EF\u4EE5\u7528\u4E8E\u6280\u80FD\u70B9\u7684\u63D0\u5347\u3002\n\u70B9\u51FB\u5DE6\u8FB9\u5C31\u53EF\u4EE5\u5F3A\u5316\u6280\u80FD\u5566\uFF01"
+  - id: 12
+    group: 1
+    step: 0
+    strContent: "\u73B0\u5728\u662F\u65F6\u5019\u9001\u914D\u6599\u4EEC\u4E0A\u5929\u56FD\u5566\uFF01\n\u70B9\u51FB\u84DD\u8272\u6309\u94AE\u6211\u4F1A\u7528\u529B\u5438\u6C14\u5438\u6536\u4ED6\u4EEC\uFF01"
+  - id: 13
+    group: 1
+    step: 0
+    strContent: "\u6211\u4F1A\u6839\u636E\u914D\u6599\u7684\u591A\u5C11\u7ED9\u4F60\u5C0F\u8D39\u54E6\uFF01"
+  - id: 14
+    group: 1
+    step: 1
+    strContent: 
+  - id: 15
+    group: 2
+    step: 0
+    strContent: "\u55F7\u545C\u5403\u7684\u9971\u9971\u7684\uFF01"
+  - id: 16
+    group: 2
+    step: 0
+    strContent: "\u5BF9\u4E86\uFF01\u5982\u679C\u4E00\u53E3\u6C14\u5582\u6211\u4E09\u79CD\u4E00\u6837\u7684\u914D\u6599\uFF01\n\u6211\u4F1A\u7ED9\u4F60\u989D\u5916\u5C0F\u8D39\u54E6\uFF01"
+  - id: 17
+    group: 2
+    step: 0
+    strContent: "\u4E09\u79CD\u4E0D\u540C\u7684\u4E5F\u4E0D\u9519\uFF1F\u597D\u50CF\u53EB\u5976\u8336\u4E09\u5144\u5F1F\u3002"
+  - id: 18
+    group: 2
+    step: 0
+    strContent: "\u8FD8\u6709\u73B0\u5728\u5F00\u59CB\u914D\u6599\u4EEC\u5BF9\u7535\u68AF\u8981\u6C42\u53D8\u9AD8\u4E86\u3002"
+  - id: 19
+    group: 2
+    step: 0
+    strContent: "\u592A\u957F\u65F6\u95F4\u4E0D\u63A5\u4ED6\u4EEC\uFF0C\u6012\u6C14\u503C\u4F1A\u586B\u6EE1\u6C14\u6CE1\uFF0C\n\u4ED6\u4EEC\u5C31\u4F1A\u6124\u6012\u7684\u4E0D\u5750\u7535\u68AF\u4E86\u3002"
+  - id: 20
+    group: 2
+    step: 1
+    strContent: 
+  - id: 21
+    group: 3
+    step: 0
+    strContent: "\u563F\u563F\u771F\u597D\u559D\u3002"
+  - id: 22
+    group: 3
+    step: 0
+    strContent: "\u7B49\u7B49\u597D\u50CF\u6709\u602A\u4E1C\u897F\u6DF7\u8FDB\u6765\u4E86\u3002\n\u600E\u4E48\u5976\u8336\u914D\u6599\u4F1A\u6709\u8FA3\u6912\u554A\uFF01"
+  - id: 23
+    group: 3
+    step: 0
+    strContent: "\u592A\u602A\u4E86\uFF01\u6211\u53EF\u4E0D\u60F3\u5403\u8FA3\u6912\u3002"
+  - id: 24
+    group: 3
+    step: 0
+    strContent: "\u5982\u679C\u4F60\u5582\u6211\u5403\u8FA3\u6912\uFF0C\u6211\u5C31\u6263\u4F60\u7684\u94B1\u94B1\uFF01"
+  - id: 25
+    group: 3
+    step: 1
+    strContent: 
+  - id: 26
+    group: 4
+    step: 0
+    strContent: "\u547C\u3002\u771F\u523A\u6FC0\u3002\n\u4F46\u662F\uFF1F\uFF1F\uFF1F\uFF1F"
+  - id: 27
+    group: 4
+    step: 0
+    strContent: "\u600E\u4E48\u8FD8\u6709\u7C91\u7C91\u554A\uFF01\n\u4F60\u8FD9\u5976\u8336\u5E97\u5E72\u4E0D\u5E72\u51C0\u554A\uFF01"
+  - id: 28
+    group: 4
+    step: 0
+    strContent: "\u8981\u662F\u8BA9\u7C91\u7C91\u6C61\u67D3\u4E86\u5976\u8336\u6216\u8005\u5438\u7BA1\uFF0C\n\u6211\u4E00\u5B9A\u4F1A\u6253\u7535\u8BDD\u6295\u8BC9\u7684\uFF01"
+  - id: 29
+    group: 4
+    step: 0
+    strContent: "\u5982\u679C\u7C91\u7C91\u5728\u6392\u961F\uFF0C\u5C31\u8BA9\u4ED6\u4E00\u76F4\u7B49\u5427\uFF01"
+  - id: 30
+    group: 4
+    step: 1
+    strContent: 

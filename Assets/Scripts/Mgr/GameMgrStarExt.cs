@@ -23,6 +23,7 @@ public partial class GameMgr
             levelViewMgr.RefreshLevel();
             uiMgr.AddLevelRefresh();
             gameData.listUnlockHuman.Add(1003);
+            gameData.canRun = true;
             EventCenter.Instance.EventTrigger("LevelUpPage", null);
         }
         else if (gameData.curStarLevel == StarLevel.Star2 && gameData.Money >= 500)

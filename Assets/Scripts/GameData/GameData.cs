@@ -18,6 +18,7 @@ public partial class GameData
     //Data
     public StarLevel curStarLevel = StarLevel.Star0;
     public bool canEat = false;
+    public bool canRun = false;
     public int curLevel = 1;
     public int numLevel = 3;
 

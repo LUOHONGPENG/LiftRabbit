@@ -102,11 +102,14 @@ public partial class GameMgr
             switch (humanData.humanState)
             {
                 case HumanState.InQueue:
-                    humanData.TimeGoWait(time);
-                    RefreshHumanWaitUI(humanData);
-                    if (humanData.CheckWhetherWaitOut())
+                    if (gameData.canRun)
                     {
-                        RemoveHumanFromQueue(humanData);
+                        humanData.TimeGoWait(time);
+                        RefreshHumanWaitUI(humanData);
+                        if (humanData.CheckWhetherWaitOut())
+                        {
+                            RemoveHumanFromQueue(humanData);
+                        }
                     }
                     break;
                 case HumanState.InLift:
@@ -219,6 +222,16 @@ public partial class GameMgr
                 }
 
                 if (uiMgr.levelUpMgr.objPopup.activeSelf)
+                {
+                    temp = true;
+                }
+
+                if (uiMgr.tutorialUIMgr.objPopup.activeSelf)
+                {
+                    temp = true;
+                }
+
+                if (uiMgr.endUIMgr.objPopup.activeSelf)
                 {
                     temp = true;
                 }
