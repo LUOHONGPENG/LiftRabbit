@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class EffectUIMgr : MonoBehaviour
 {
     public Transform tfEffect;
+    public Transform tfPenalty;
+
     public GameObject pfMoneyTip;
 
     public List<Transform> listTfMoney;
@@ -17,11 +20,16 @@ public class EffectUIMgr : MonoBehaviour
     private void OnEnable()
     {
         EventCenter.Instance.AddEventListener("EffectMoneyText", EffectMoneyEvent);
+        EventCenter.Instance.AddEventListener("EffectPenaltyText", EffectPenaltyEvent);
+
     }
+
 
     private void OnDisable()
     {
         EventCenter.Instance.RemoveEventListener("EffectMoneyText", EffectMoneyEvent);
+        EventCenter.Instance.RemoveEventListener("EffectPenaltyText", EffectPenaltyEvent);
+
     }
 
     private void EffectMoneyEvent(object arg0)
@@ -33,8 +41,16 @@ public class EffectUIMgr : MonoBehaviour
         int childCount = tfEffect.childCount;
         objMoneyTip.transform.position = listTfMoney[childCount-1].position;
         itemMoneyTip.Init(info.content);
-
     }
+
+    private void EffectPenaltyEvent(object arg0)
+    {
+        EffectPenaltyTextInfo info = (EffectPenaltyTextInfo)arg0;
+        GameObject objMoneyTip = GameObject.Instantiate(pfMoneyTip, tfPenalty);
+        EffectUIItem itemMoneyTip = objMoneyTip.GetComponent<EffectUIItem>();
+        itemMoneyTip.Init(info.content);
+    }
+
 }
 public struct EffectMoneyTextInfo
 {
@@ -42,6 +58,18 @@ public struct EffectMoneyTextInfo
     public Vector2 pos;
 
     public EffectMoneyTextInfo(string content, Vector2 pos)
+    {
+        this.content = content;
+        this.pos = pos;
+    }
+}
+
+public struct EffectPenaltyTextInfo
+{
+    public string content;
+    public Vector2 pos;
+
+    public EffectPenaltyTextInfo(string content, Vector2 pos)
     {
         this.content = content;
         this.pos = pos;

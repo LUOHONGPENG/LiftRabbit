@@ -7,6 +7,8 @@ public class ResourceUIMgr : MonoBehaviour
 {
     public Text codeMoney;
     public Text codePopularity;
+    public Text codeNeedMoney;
+
     public List<StarUIItem> listStar;
 
     public Button btnSkillTree;
@@ -51,6 +53,20 @@ public class ResourceUIMgr : MonoBehaviour
             {
                 listStar[i].RefreshStarView(false);
             }
+        }
+
+        int starLevel = (int)PublicTool.GetGameData().curStarLevel;
+        switch (starLevel)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                codeNeedMoney.text = string.Format("ÏÂ¼¶Ðè±Ò{0}", GameGlobal.listLevelUp[starLevel]);
+                break;
+            default:
+                codeNeedMoney.text = "";
+                break;
         }
     }
 }

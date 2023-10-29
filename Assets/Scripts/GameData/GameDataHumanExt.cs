@@ -83,6 +83,7 @@ public partial class GameData
     public void HumanEat()
     {
         int moneyTemp = 0;
+        int moneyPanalty = 0;
         PublicTool.PlaySound(SoundType.Eat);
         Dictionary<int, int> dicTypeNum = new Dictionary<int, int>();
         for (int i = 0; i < listHumanInLift.Count; i++)
@@ -98,10 +99,20 @@ public partial class GameData
                 dicTypeNum.Add(humanData.typeID, 1);
             }
             //Eat
-            moneyTemp += humanData.GetMoney();
+            if (humanData.GetMoney() > 0)
+            {
+                moneyTemp += humanData.GetMoney();
+            }
+            else
+            {
+                moneyPanalty += humanData.GetMoney();
+            }
         }
         Money += moneyTemp;
-        EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("+" + moneyTemp, Vector2.zero));
+        EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("Œ¸ ’+" + moneyTemp, Vector2.zero));
+        Money += moneyPanalty;
+        EventCenter.Instance.EventTrigger("EffectMoneyText", new EffectMoneyTextInfo("¿±À¿¡À " + moneyPanalty, Vector2.zero));
+
 
         //Combo
         List<Vector2Int> listEatTypeNum = new List<Vector2Int>();
