@@ -13,6 +13,9 @@ public class LevelUpUIMgr : MonoBehaviour
 
     public List<StarUIItem> listStar;
 
+    public List<GameObject> listObjLevelUp;
+
+
     private GameData gameData;
 
     public void Init()
@@ -58,7 +61,7 @@ public class LevelUpUIMgr : MonoBehaviour
     {
 
         RefreshStar();
-
+        RefreshObj();
         objPopup.SetActive(true);
 
     }
@@ -77,6 +80,30 @@ public class LevelUpUIMgr : MonoBehaviour
             {
                 listStar[i].RefreshStarView(false);
             }
+        }
+    }
+
+    public void RefreshObj()
+    {
+        foreach(var obj in listObjLevelUp)
+        {
+            obj.SetActive(false);
+        }
+
+        switch ((int)gameData.curStarLevel)
+        {
+            case 1:
+                listObjLevelUp[0].SetActive(true);
+                break;
+            case 2:
+                listObjLevelUp[1].SetActive(true);
+                break;
+            case 3:
+                listObjLevelUp[2].SetActive(true);
+                break;
+            case 4:
+                listObjLevelUp[3].SetActive(true);
+                break;
         }
     }
 

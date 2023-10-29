@@ -27,7 +27,7 @@ MonoBehaviour:
     costPopular: 5
     conditionPreNode: 1000
     rowID: 1
-    columnID: -2
+    columnID: -3
     iconUrl: imgSkillNode1001
   - id: 1002
     name: "\u5438\u7BA1\u6269\u5BB9+"
@@ -35,7 +35,7 @@ MonoBehaviour:
     costPopular: 10
     conditionPreNode: 1001
     rowID: 2
-    columnID: -2
+    columnID: -3
     iconUrl: imgSkillNode1002
   - id: 2001
     name: "\u5438\u7BA1\u52A0\u901F"
@@ -75,7 +75,7 @@ MonoBehaviour:
     costPopular: 5
     conditionPreNode: 1000
     rowID: 1
-    columnID: 2
+    columnID: 3
     iconUrl: imgSkillNode4001
   - id: 4002
     name: "\u9AD8\u901F\u5438\u6536+"
@@ -83,5 +83,5 @@ MonoBehaviour:
     costPopular: 10
     conditionPreNode: 4001
     rowID: 2
-    columnID: 2
+    columnID: 3
     iconUrl: imgSkillNode4002

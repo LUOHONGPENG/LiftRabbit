@@ -14,14 +14,32 @@ public partial class GameData
         }
     }
 
+    public bool CheckSkillNode(int skillID)
+    {
+        if (listUnlockSkillNode.Contains(skillID))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private float speedLift = 1f;
     public float curSpeedLift
     {
         get
         {
             float speed = speedLift;
-
-
+            if (CheckSkillNode(2001))
+            {
+                speed += 0.4f;
+            }
+            if (CheckSkillNode(2002))
+            {
+                speed += 0.6f;
+            }
             return speed;
         }
     }
@@ -32,7 +50,17 @@ public partial class GameData
         get
         {
             float speed = speedLift;
-            float speedBonus = Popularity * 0.04f;
+            float speedBonus = 0;
+            float rate = 0.05f;
+            if (Popularity > 50)
+            {
+                speedBonus = 50 * rate;
+            }
+            else
+            {
+                speedBonus = Popularity * rate;
+            }
+
             speed += speedBonus;
             return speed;
         }
@@ -44,7 +72,14 @@ public partial class GameData
         get
         {
             int temp = queueLimit;
-
+            if (CheckSkillNode(3001))
+            {
+                temp++;
+            }
+            if (CheckSkillNode(3002))
+            {
+                temp++;
+            }
             return temp;
         }
     }
@@ -56,10 +91,36 @@ public partial class GameData
         get
         {
             int temp = capacity;
-
+            if (CheckSkillNode(1001))
+            {
+                temp++;
+            }
+            if (CheckSkillNode(1002))
+            {
+                temp++;
+            }
             return temp;
         }
     }
+
+    private float eatSpeed = 1f;
+    public float EatSpeed
+    {
+        get
+        {
+            float temp = eatSpeed;
+            if (CheckSkillNode(4001))
+            {
+                temp *= 0.7f;
+            }
+            if (CheckSkillNode(4002))
+            {
+                temp *= 0.7f;
+            }
+            return temp;
+        }
+    }
+
 
     public int curLiftLoad
     {

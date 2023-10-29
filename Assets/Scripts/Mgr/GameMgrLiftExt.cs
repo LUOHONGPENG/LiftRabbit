@@ -78,7 +78,7 @@ public partial class GameMgr
             liftViewMgr.MoveToHeaven();
             yield return new WaitForSeconds(0.5f);
             gameData.HumanEat();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3f * gameData.EatSpeed);
             ClearHumanLift();
             gameData.listHumanInLift.Clear();
             yield return new WaitForEndOfFrame();
@@ -93,9 +93,9 @@ public partial class GameMgr
 
     #region Human
     [HideInInspector]
-    public float timerGenerateHuman = 5f;
+    public float timerGenerateHuman = 3.5f;
     [HideInInspector]
-    public float timeGenerateHuman = 5f;
+    public float timeGenerateHuman = 3.5f;
 
     private void Update()
     {

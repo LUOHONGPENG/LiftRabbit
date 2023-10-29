@@ -71,7 +71,7 @@ public partial class GameData
             {
                 listHumanArrive.Add(humanData);
                 humanData.humanState = HumanState.Arrive;
-                tempPopular++;
+                tempPopular+=2;
                 listHumanInLift.Remove(humanData);
             }
         }
