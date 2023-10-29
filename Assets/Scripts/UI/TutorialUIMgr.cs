@@ -85,7 +85,12 @@ public class TutorialUIMgr : MonoBehaviour
         switch (item.step)
         {
             case TutorialStep.Text:
-
+                imgTutorial.gameObject.SetActive(false);
+                break;
+            case TutorialStep.TextImg:
+                imgTutorial.sprite = Resources.Load("Sprites/" + item.picUrl, typeof(Sprite)) as Sprite;
+                imgTutorial.SetNativeSize();
+                imgTutorial.gameObject.SetActive(true);
                 break;
             case TutorialStep.End:
                 Close();

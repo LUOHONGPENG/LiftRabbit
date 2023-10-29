@@ -13,7 +13,7 @@ public static class GameGlobal
     public static float skillNodeSpacingX = 120f;
     public static float skillNodeSpacingY = 240f;
 
-    public static List<int> listLevelUp = new List<int> {0, 120, 750, 1300, 2400 };
+    public static List<int> listLevelUp = new List<int> {0, 120, 750, 1550, 3000 };
 
     public static List<Vector2> listLiftPos = new List<Vector2> 
     { new Vector2(-1.1f, 0), new Vector2(-0.5f, 0.4f), new Vector2(0f, 0.5f)
